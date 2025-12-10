@@ -1019,10 +1019,29 @@
             </div>
             © 2025 Adarsha Pathasala. All Rights Reserved. <br>
             Designed & Maintained by the Adarsha Pathasala Web Team
+
+            <a href="chatbot.html" class="chat-launcher">
+                <img src="./assets/logo/AI-Robot.png.png">
+            </a>
+
         </div>
     </footer>
 
     <!-- JavaScript -->
     <script src="script.js"></script>
+    <script>
+    const apBtn = document.getElementById("apChatBtn");
+    const apPopup = document.getElementById("apChatPopup");
+    const apClose = document.getElementById("apClosePopup");
+
+    apBtn.onclick = () => {
+        apPopup.style.display = "block";
+    };
+
+    apClose.onclick = () => {
+        apPopup.style.display = "none";
+    };
+</script>
+
 </body>
 </html>

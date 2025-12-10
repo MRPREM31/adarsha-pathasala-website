@@ -1175,3 +1175,62 @@ footer ul li a:hover {
 .text-accent {
     color: var(--primary-color);
 }
+
+/* Perfect Floating Chat Button */
+.chat-launcher {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.25s ease;
+}
+
+/* Make inner logo perfect circle */
+.chat-launcher img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+
+    box-shadow: 0 0 8px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+}
+
+/* Hover & Press Effects */
+.chat-launcher:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+}
+
+.chat-launcher:active {
+    transform: scale(0.97);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* Mobile View */
+@media (max-width: 600px) {
+    .chat-launcher {
+        width: 60px;
+        height: 60px;
+        bottom: 18px;
+        right: 18px;
+    }
+
+    .chat-launcher img {
+        width: 45px;
+        height: 45px;
+    }
+}

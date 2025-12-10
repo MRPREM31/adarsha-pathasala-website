@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adarsha Pathasala | AI Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Styles -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(to bottom right, #0a0f29, #1e2748);
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* PAGE WRAPPER */
+        .chat-wrapper {
+            width: 100%;
+            max-width: 480px;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            border-radius: 20px;
+            backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .chat-header {
+            padding: 18px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.12);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .chat-header img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: contain;
+        }
+
+        .chat-header h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        /* CHAT AREA */
+        .chat-box {
+            flex: 1;
+            padding: 18px;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 12px 16px;
+            max-width: 80%;
+            font-size: 0.95rem;
+            border-radius: 14px;
+            line-height: 1.45;
+            animation: fadeIn 0.25s ease-in;
+        }
+
+        .user {
+            background: #4f67ff;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+
+        .bot {
+            background: rgba(255, 255, 255, 0.12);
+            border-bottom-left-radius: 4px;
+        }
+
+        /* INPUT AREA */
+        .chat-input-area {
+            padding: 14px;
+            display: flex;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 12px 16px;
+            font-size: 1rem;
+            border-radius: 12px;
+            border: none;
+            outline: none;
+        }
+
+        .chat-input-area button {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            border: none;
+            background: #4f67ff;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .chat-input-area button:hover {
+            background: #3c52d9;
+        }
+
+        /* BOT TYPING ANIMATION */
+        .typing {
+            display: inline-block;
+            height: 6px;
+            width: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            margin-right: 4px;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-wrapper">
+
+    <!-- Header -->
+    <div class="chat-header">
+        <img src="./assets/logo/AI-Robot.png.png" alt="AI Robot">
+        <h2>AP Study Assistant</h2>
+    </div>
+
+    <!-- Chat messages -->
+    <div class="chat-box" id="chatBox">
+        <div class="message bot">
+            Hello! 👋 I am the <strong>Adarsha Pathasala AI Assistant</strong>.<br><br>
+            You can ask me about:<br>
+            • Admission process<br>
+            • Fees & class timings<br>
+            • Faculty info<br>
+            • Student results<br>
+            • Institute details<br><br>
+            How can I help you today?
+        </div>
+    </div>
+
+    <!-- Input -->
+    <div class="chat-input-area">
+        <input type="text" id="userInput" placeholder="Type your message..." autocomplete="off">
+        <button onclick="sendMessage()">
+            <i class="fa-solid fa-paper-plane"></i>
+        </button>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    const chatBox = document.getElementById("chatBox");
+
+    function addMessage(text, sender) {
+        const msg = document.createElement("div");
+        msg.classList.add("message", sender);
+        msg.innerHTML = text;
+        chatBox.appendChild(msg);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    async function sendMessage() {
+        const input = document.getElementById("userInput");
+        const text = input.value.trim();
+
+        if (!text) return;
+
+        // User message
+        addMessage(text, "user");
+        input.value = "";
+
+        // Bot typing indicator
+        const typing = document.createElement("div");
+        typing.classList.add("message", "bot");
+        typing.innerHTML = `<span class="typing"></span><span class="typing"></span><span class="typing"></span>`;
+        chatBox.appendChild(typing);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // Send to Netlify backend
+        const response = await fetch("/.netlify/functions/chatbot", {
+            method: "POST",
+            body: JSON.stringify({ message: text })
+        });
+
+        const data = await response.json();
+
+        // Remove typing
+        typing.remove();
+
+        // Bot response
+        addMessage(data.reply, "bot");
+    }
+</script>
+
+</body>
+</html>
