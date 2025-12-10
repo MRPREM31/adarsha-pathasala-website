@@ -1,36 +1,46 @@
-export default async (req, context) => {
+export async function handler(event, context) {
     try {
-        const body = await req.json();
+        const body = JSON.parse(event.body || "{}");
         const userMessage = body.message || "Hello";
 
-        const completion = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        const apiKey = process.env.GROQ_API_KEY;
+        if (!apiKey) {
+            return {
+                statusCode: 500,
+                body: JSON.stringify({ reply: "API key missing on server." })
+            };
+        }
+
+        const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${process.env.GROQ_API_KEY}`
+                "Authorization": `Bearer ${apiKey}`
             },
             body: JSON.stringify({
                 model: "llama3.1-8b-instant",
                 messages: [
-                    { role: "system", content: "You are Adarsha Pathasala's AI assistant. Help students with admissions, class details, faculty info, results, and institute information."},
+                    { role: "system", content: "You are Adarsha Pathasala’s AI assistant. Help with admissions, results, classes, faculty, etc." },
                     { role: "user", content: userMessage }
                 ],
                 max_tokens: 300
             })
         });
 
-        const data = await completion.json();
+        const data = await groqRes.json();
 
-        return new Response(
-            JSON.stringify({ reply: data.choices?.[0]?.message?.content || "I am here to help!" }),
-            { status: 200, headers: { "Content-Type": "application/json" } }
-        );
+        return {
+            statusCode: 200,
+            body: JSON.stringify({
+                reply: data.choices?.[0]?.message?.content || "I am here to help!"
+            })
+        };
 
-    } catch (error) {
-        console.error("ERROR:", error);
-        return new Response(
-            JSON.stringify({ reply: "Server error. Please try again later." }),
-            { status: 500, headers: { "Content-Type": "application/json" } }
-        );
+    } catch (err) {
+        console.error("SERVER ERROR:", err);
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ reply: "Server error. Please try again later." })
+        };
     }
-};
+}
