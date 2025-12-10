@@ -54,11 +54,6 @@
     <meta name="twitter:image" content="https://www.mrprem.in/assets/og/adarsha-banner.jpg">
 
     <!-- =====================================
-        FONT AWESOME
-    ===================================== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- =====================================
         SCHEMA MARKUP (GOOGLE RANKING BOOST)
     ===================================== -->
     <script type="application/ld+json">
@@ -90,1250 +85,23 @@
     }
     </script>
 
-
-    <style>
-        :root {
-            --bg-color: #f5f7fb;
-            --bg-elevated: #ffffff;
-            --primary-color: #1f5bff;
-            --primary-soft: rgba(31, 91, 255, 0.06);
-            --accent-color: #ffb503;
-            --text-color: #1f2933;
-            --muted-text: #6b7280;
-            --border-color: #e5e7eb;
-            --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
-            --radius-lg: 18px;
-            --radius-xl: 24px;
-            --transition-fast: 0.25s ease;
-        }
-
-        body.dark-theme {
-            --bg-color: #050816;
-            --bg-elevated: #0b1020;
-            --primary-color: #60a5fa;
-            --primary-soft: rgba(96, 165, 250, 0.08);
-            --accent-color: #fbbf24;
-            --text-color: #e5e7eb;
-            --muted-text: #9ca3af;
-            --border-color: #1f2933;
-            --shadow-soft: 0 22px 45px rgba(0, 0, 0, 0.7);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.7;
-            scroll-behavior: smooth;
-            position: relative;
-            min-height: 100vh;
-        }
-
-        /* Study elements in background */
-        body::before {
-            content: "📚 ✏️ 📐 🔬";
-            position: fixed;
-            bottom: 5%;
-            right: 5%;
-            font-size: 5rem;
-            opacity: 0.03;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background-image:
-                radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.08) 0, transparent 55%),
-                radial-gradient(circle at 100% 100%, rgba(14, 116, 144, 0.08) 0, transparent 55%);
-            opacity: 0.7;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        main {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Layout helpers */
-        .container {
-            width: 100%;
-            max-width: 1160px;
-            margin: 0 auto;
-            padding: 0 1.25rem;
-        }
-
-        section {
-            padding: 4rem 0;
-        }
-
-        @media (min-width: 992px) {
-            section {
-                padding: 5rem 0;
-            }
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .section-kicker {
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 0.35rem;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-subtitle {
-            color: var(--muted-text);
-            max-width: 600px;
-            margin: 0.5rem auto 0;
-            font-size: 0.95rem;
-        }
-
-        /* Navbar */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            backdrop-filter: blur(16px);
-            background: linear-gradient(to bottom, rgba(5, 5, 20, 0.92), rgba(5, 5, 20, 0.75));
-        }
-
-        body:not(.dark-theme) header {
-            background: linear-gradient(to bottom, rgba(248, 250, 252, 0.95), rgba(248, 250, 252, 0.75));
-        }
-
-        .nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 4rem;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-weight: 800;
-            letter-spacing: 0.06em;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-        }
-
-         .nav-logo-mark {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;   /* makes it round */
-            overflow: hidden;     /* hides edges */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid var(--primary-color); /* optional border */
-        }
-
-        .nav-logo-mark img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;   /* makes the image fill the circle */
-        }
-
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            font-size: 0.9rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--muted-text);
-            font-weight: 500;
-            position: relative;
-            padding-bottom: 0.15rem;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -0.15rem;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            transition: width var(--transition-fast);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        .mode-toggle {
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: var(--bg-elevated);
-            padding: 0.15rem 0.65rem;
-            font-size: 0.8rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-            color: var(--muted-text);
-            transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
-        }
-
-        .mode-toggle i {
-            font-size: 0.9rem;
-        }
-
-        .mode-toggle:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 14px 28px rgba(15, 23, 42, 0.18);
-            border-color: var(--primary-color);
-        }
-        .footer-social img.icon-img {
-            width: 22px;
-            height: 22px;
-            object-fit: contain;
-            /* Matches white icons in dark footer */
-            transition: 0.3s ease;
-        }
-        .editor-profile {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 10px;
-            padding: 15px;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        body.dark-theme .editor-profile {
-            background: rgba(0, 0, 0, 0.25);
-        }
-
-        .editor-profile img {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--primary-color);
-        }
-
-        .editor-profile a {
-            color: var(--primary-color);
-            text-decoration: underline;
-        }
-
-        .editor-profile a:hover {
-            opacity: 0.8;
-        }
-
-        .editor-text {
-            color: var(--muted-text);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-
-    .footer-social a:hover img.icon-img {
-        filter: brightness(1) invert(0); /* hover effect */
-    }
-
-    /* ===== Result Gallery Grid ===== */
-    .result-gallery {
-        margin-top: 18px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 20px;
-    }
-
-    /* Each image card */
-    .result-card {
-        position: relative;
-        overflow: hidden;
-        border-radius: 18px;
-        height: 180px;
-    }
-
-    .result-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: 0.4s ease;
-        filter: brightness(0.95);
-    }
-
-    /* Dark overlay */
-    .result-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.65));
-        opacity: 0;
-        transition: 0.4s ease;
-    }
-
-    /* Label text */
-    .result-label {
-        position: absolute;
-        bottom: 12px;
-        left: 12px;
-        color: #fff;
-        font-weight: 700;
-        font-size: 1rem;
-        z-index: 2;
-        opacity: 0;
-        transform: translateY(10px);
-        transition: 0.3s ease;
-    }
-
-    .result-label span {
-        display: block;
-        font-size: 0.8rem;
-        opacity: 0.85;
-    }
-
-    /* Hover Effects */
-    .result-card:hover img {
-        transform: scale(1.05);
-        filter: brightness(1.1);
-    }
-
-    .result-card:hover .result-overlay {
-        opacity: 1;
-    }
-
-    .result-card:hover .result-label {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-
-
-            @media (max-width: 768px) {
-                .nav-links {
-                    position: absolute;
-                    left: 1.25rem;
-                    right: 1.25rem;
-                    top: 4rem;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    background: var(--bg-elevated);
-                    border-radius: 16px;
-                    padding: 0.9rem 1rem 0.7rem;
-                    box-shadow: var(--shadow-soft);
-                    border: 1px solid var(--border-color);
-                    transform-origin: top;
-                    transform: scaleY(0.8);
-                    opacity: 0;
-                    pointer-events: none;
-                    transition: opacity var(--transition-fast), transform var(--transition-fast);
-                }
-                .nav-links.open {
-                    opacity: 1;
-                    pointer-events: auto;
-                    transform: scaleY(1);
-                }
-                .nav-toggle {
-                    display: inline-flex;
-                    color: var(--muted-text);
-                }
-            }
-
-            /* Hero */
-            #home {
-                padding-top: 4.5rem;
-            }
-
-            .hero {
-                display: grid;
-                gap: 2.5rem;
-                align-items: center;
-            }
-
-        @media (min-width: 900px) {
-            .hero {
-                grid-template-columns: 1.35fr 1fr;
-            }
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 999px;
-            background: var(--primary-soft);
-            border: 1px dashed rgba(31, 91, 255, 0.35);
-            color: var(--muted-text);
-            font-size: 0.8rem;
-            margin-bottom: 0.7rem;
-        }
-
-        .badge i {
-            color: var(--primary-color);
-        }
-
-        .hero-title {
-            font-size: clamp(2rem, 3vw, 2.4rem);
-            line-height: 1.2;
-            margin-bottom: 0.65rem;
-        }
-
-        .hero-title span {
-            background-image: linear-gradient(120deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .hero-tagline {
-            font-size: 0.98rem;
-            color: var(--muted-text);
-            margin-bottom: 1rem;
-            max-width: 540px;
-        }
-
-        .hero-highlight-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 0.75rem;
-            margin-bottom: 1.4rem;
-        }
-
-        .chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.25rem 0.6rem;
-            border-radius: 999px;
-            background: rgba(148, 163, 184, 0.12);
-            font-size: 0.75rem;
-            color: var(--muted-text);
-        }
-
-        .chip i {
-            color: var(--accent-color);
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.9rem;
-            align-items: center;
-        }
-
-        .btn-primary,
-        .btn-ghost {
-            border-radius: 999px;
-            padding: 0.55rem 1.2rem;
-            font-size: 0.9rem;
-            border: none;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            font-weight: 600;
-            transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
-            text-decoration: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-color), #2563eb);
-            color: #ffffff;
-            box-shadow: 0 18px 30px rgba(37, 99, 235, 0.45);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 24px 42px rgba(37, 99, 235, 0.65);
-        }
-
-        .btn-ghost {
-            background: transparent;
-            color: var(--primary-color);
-            border: 1px solid rgba(148, 163, 184, 0.7);
-        }
-
-        .btn-ghost:hover {
-            background: var(--primary-soft);
-            border-color: var(--primary-color);
-        }
-
-        .hero-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.4rem;
-            margin-top: 1.4rem;
-            font-size: 0.78rem;
-            color: var(--muted-text);
-        }
-
-        .hero-meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.1rem;
-        }
-
-        .hero-meta-label {
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 600;
-        }
-
-        .hero-meta-value {
-            font-size: 0.9rem;
-            color: var(--text-color);
-            font-weight: 600;
-        }
-
-        .hero-visual {
-            position: relative;
-        }
-
-        .hero-card {
-            border-radius: var(--radius-xl);
-            background: var(--bg-elevated);
-            padding: 1.4rem 1.3rem;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-card-tag {
-            font-size: 0.78rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--muted-text);
-            margin-bottom: 0.6rem;
-        }
-
-        .hero-stat-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.8rem;
-        }
-
-        .hero-stat-main {
-            font-size: 1.6rem;
-            font-weight: 700;
-        }
-
-        .badge-soft {
-            padding: 0.3rem 0.7rem;
-            border-radius: 999px;
-            font-size: 0.75rem;
-            background: var(--primary-soft);
-            color: var(--primary-color);
-        }
-
-        .hero-card-list {
-            list-style: none;
-            margin-top: 0.5rem;
-            display: grid;
-            gap: 0.45rem;
-            font-size: 0.85rem;
-            color: var(--muted-text);
-        }
-
-        .hero-card-list li i {
-            color: var(--accent-color);
-            margin-right: 0.35rem;
-        }
-
-        .hero-badge-floating {
-            position: absolute;
-            right: 0.9rem;
-            bottom: 0.9rem;
-            padding: 0.5rem 0.7rem;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #f97316, #ec4899);
-            color: #fff;
-            font-size: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 16px 30px rgba(236, 72, 153, 0.6);
-        }
-
-        .hero-badge-floating i {
-            background: rgba(15, 23, 42, 0.15);
-            padding: 0.3rem;
-            border-radius: 999px;
-        }
-
-        /* About */
-        .about-grid {
-            display: grid;
-            gap: 1.8rem;
-        }
-
-        @media (min-width: 880px) {
-            .about-grid {
-                grid-template-columns: 1.4fr 1fr;
-            }
-        }
-
-        .card {
-            background: var(--bg-elevated);
-            border-radius: var(--radius-lg);
-            padding: 1.4rem 1.3rem;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.6rem;
-        }
-
-        .card p {
-            font-size: 0.92rem;
-            color: var(--muted-text);
-        }
-
-        .bullet-list {
-            margin-top: 0.6rem;
-            padding-left: 1em;
-            font-size: 0.92rem;
-            color: var(--muted-text);
-        }
-
-        .bullet-list li {
-            margin-bottom: 0.3rem;
-        }
-
-        .founder-name {
-            font-weight: 700;
-            margin-top: 0.6rem;
-            margin-bottom: 0.1rem;
-        }
-
-        .founder-qual {
-            font-size: 0.85rem;
-            color: var(--muted-text);
-        }
-
-        .founder-quote {
-            margin-top: 0.7rem;
-            font-style: italic;
-            font-size: 0.9rem;
-            border-left: 3px solid var(--primary-color);
-            padding-left: 0.7rem;
-        }
-
-        /* Faculties */
-        .faculty-grid {
-            display: grid;
-            gap: 1.1rem;
-        }
-
-        @media (min-width: 640px) {
-            .faculty-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        @media (min-width: 900px) {
-            .faculty-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-        }
-
-        .faculty-card {
-            display: flex;
-            gap: 0.8rem;
-            padding: 0.9rem;
-            border-radius: 16px;
-            background: var(--bg-elevated);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
-            align-items: center;
-        }
-
-        .faculty-avatar {
-            flex-shrink: 0;
-            width: 52px;
-            height: 52px;
-            border-radius: 999px;
-            overflow: hidden;
-            border: 2px solid var(--primary-soft);
-        }
-
-        .faculty-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .faculty-info h4 {
-            font-size: 0.95rem;
-            margin-bottom: 0.1rem;
-        }
-
-        .faculty-info p {
-            font-size: 0.8rem;
-            color: var(--muted-text);
-        }
-
-        .faculty-tag {
-            font-size: 0.75rem;
-            color: var(--primary-color);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.09em;
-            margin-top: 0.15rem;
-        }
-
-        /* Feedback */
-        .rating-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 1.2rem;
-            margin-bottom: 1.8rem;
-        }
-
-        .rating-box {
-            padding: 0.9rem 1.2rem;
-            border-radius: 18px;
-            background: var(--bg-elevated);
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-soft);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .rating-score {
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .rating-stars {
-            color: #facc15;
-            font-size: 1.1rem;
-        }
-
-        .rating-meta {
-            font-size: 0.8rem;
-            color: var(--muted-text);
-        }
-
-        .rating-link {
-            font-size: 0.85rem;
-            text-decoration: none;
-            color: var(--primary-color);
-        }
-
-        .rating-link i {
-            margin-left: 0.25rem;
-            font-size: 0.8rem;
-        }
-
-        .feedback-grid {
-            display: grid;
-            gap: 1.2rem;
-        }
-
-        @media (min-width: 880px) {
-            .feedback-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        .feedback-card {
-            background: var(--bg-elevated);
-            border-radius: 18px;
-            padding: 1rem 1.1rem;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-soft);
-            display: flex;
-            flex-direction: column;
-            gap: 0.55rem;
-        }
-
-        .feedback-header {
-            display: flex;
-            gap: 0.7rem;
-            align-items: center;
-        }
-
-        .feedback-avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 999px;
-            overflow: hidden;
-            border: 2px solid var(--primary-soft);
-            flex-shrink: 0;
-        }
-
-        .feedback-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .feedback-name {
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        .feedback-year {
-            font-size: 0.75rem;
-            color: var(--muted-text);
-        }
-
-        .feedback-stars {
-            color: #facc15;
-            font-size: 0.9rem;
-        }
-
-        .feedback-text {
-            font-size: 0.86rem;
-            color: var(--muted-text);
-        }
-
-        .feedback-cta {
-            text-align: center;
-            margin-top: 1.6rem;
-        }
-
-        /* Memories */
-        .memories-grid {
-            display: grid;
-            gap: 0.9rem;
-        }
-
-        @media (min-width: 640px) {
-            .memories-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-        }
-
-        .memory-card {
-            position: relative;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid var(--border-color);
-        }
-
-        .memory-card img {
-            width: 100%;
-            height: 170px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .memory-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(15, 23, 42, 0.75), transparent);
-        }
-
-        .memory-label {
-            position: absolute;
-            left: 0.75rem;
-            bottom: 0.6rem;
-            color: white;
-            font-size: 0.82rem;
-            font-weight: 500;
-        }
-
-        .memory-label span {
-            display: block;
-            font-size: 0.7rem;
-            opacity: 0.8;
-        }
-
-        .memories-text {
-            margin: 1.4rem auto 0;
-            max-width: 680px;
-            font-size: 0.9rem;
-            color: var(--muted-text);
-            text-align: center;
-        }
-
-        /* Achievements */
-        .timeline {
-            position: relative;
-            padding-left: 0.6rem;
-            margin-top: 1.4rem;
-        }
-
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 1rem;
-            top: 0.2rem;
-            bottom: 0.2rem;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
-            opacity: 0.7;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 2.4rem;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 0.9rem;
-            top: 0.35rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 999px;
-            background: var(--bg-elevated);
-            border: 2px solid var(--primary-color);
-        }
-
-        .timeline-year {
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .timeline-text {
-            font-size: 0.86rem;
-            color: var(--muted-text);
-        }
-
-        /* Contact */
-        .contact-grid {
-            display: grid;
-            gap: 1.8rem;
-        }
-
-        @media (min-width: 880px) {
-            .contact-grid {
-                grid-template-columns: 1.1fr 1.1fr;
-            }
-        }
-
-        .contact-item {
-            font-size: 0.9rem;
-            color: var(--muted-text);
-            margin-bottom: 0.7rem;
-        }
-
-        .contact-item i {
-            color: var(--primary-color);
-            margin-right: 0.4rem;
-        }
-
-        .contact-form {
-            display: grid;
-            gap: 0.8rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-        }
-
-        .form-group label {
-            font-size: 0.82rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            background: rgba(15, 23, 42, 0.02);
-            padding: 0.6rem 0.7rem;
-            outline: none;
-            font-size: 0.9rem;
-            color: var(--text-color);
-            transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.25);
-            background: var(--bg-elevated);
-        }
-
-        .form-row {
-            display: grid;
-            gap: 0.8rem;
-        }
-
-        @media (min-width: 640px) {
-            .form-row {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        .form-helper {
-            font-size: 0.76rem;
-            color: var(--muted-text);
-        }
-
-        .form-status {
-            margin-top: 0.5rem;
-            font-size: 0.8rem;
-        }
-
-        .form-status.success {
-            color: #16a34a;
-        }
-
-        .form-status.error {
-            color: #dc2626;
-        }
-        /* ----- Result Gallery Inside Card ----- */
-        .section-title {
-            margin-top: 25px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            
-            padding-left: 10px;
-        }
-
-        .result-gallery {
-            margin-top: 18px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 18px;
-        }
-
-        .result-gallery img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 18px;
-            filter: brightness(0.95);
-            transition: 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-
-        .result-gallery img:hover {
-            transform: translateY(-5px);
-            filter: brightness(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-        }
-
-        /* dark theme brightness adjust */
-        body.dark-theme .result-gallery img {
-            filter: brightness(0.85);
-        }
-
-
-        /* Footer */
-        /* ======= NEW FOOTER STYLE (Like Screenshot) ======= */
-
-            /* ======= NEW PROFESSIONAL TRANSPARENT FOOTER (MATCHES YOUR THEME) ======= */
-
-            footer {
-                backdrop-filter: blur(14px);
-                background: rgba(255, 255, 255, 0.02); /* light transparent */
-                border-top: 1px solid var(--border-color);
-                padding: 3rem 0 2rem;
-                margin-top: 3rem;
-            }
-
-            /* Dark mode auto support */
-            body.dark-theme footer {
-                background: rgba(0, 0, 0, 0.25); /* elegant dark transparent */
-            }
-
-            .footer-grid {
-                max-width: 1200px;
-                margin: auto;
-                padding: 0 20px;
-                display: grid;
-                gap: 2.5rem;
-                grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            }
-
-            /* Column Titles */
-            .footer-title {
-                font-size: 1.1rem;
-                font-weight: 700;
-                margin-bottom: 1rem;
-                color: var(--text-color);
-                
-                padding-left: 10px;
-            }
-
-            /* Paragraph text */
-            footer p,
-            footer li {
-                font-size: 0.9rem;
-                color: var(--muted-text);
-                line-height: 1.6;
-            }
-
-            /* Lists */
-            footer ul {
-                list-style: none;
-                padding: 0;
-            }
-
-            footer ul li a {
-                color: var(--muted-text);
-                text-decoration: none;
-                transition: 0.3s;
-            }
-
-            footer ul li a:hover {
-                color: var(--primary-color);
-                margin-left: 4px;
-            }
-
-            /* Social icons */
-            .footer-social {
-                margin-top: 0.8rem;
-                margin-bottom: 0.8rem;
-                display: flex;
-                gap: 0.8rem;
-            }
-
-            .footer-social a {
-                width: 38px;
-                height: 38px;
-                border-radius: 50%;
-                border: 1px solid var(--border-color);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: var(--muted-text);
-                font-size: 1rem;
-                transition: 0.3s ease;
-                backdrop-filter: blur(8px);
-            }
-
-            .footer-social a:hover {
-                background: var(--primary-color);
-                color: #fff;
-                border-color: transparent;
-                transform: translateY(-3px);
-            }
-
-            /* Bottom Section */
-            .footer-bottom {
-                text-align: center;
-                margin-top: 2.5rem;
-                border-top: 1px solid var(--border-color);
-                padding-top: 1.2rem;
-                font-size: 0.85rem;
-                color: var(--muted-text);
-            }
-
-            .footer-bottom strong {
-                color: var(--primary-color);
-            }
-
-
-        @media (min-width: 720px) {
-            .footer-content {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                text-align: left;
-            }
-            .footer-row {
-                flex-direction: row;
-                align-items: center;
-                gap: 0.75rem;
-            }
-        }
-
-        .footer-strong {
-            font-weight: 600;
-            color: var(--text-color);
-        }
-
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 0.7rem;
-        }
-
-        .footer-social a {
-            width: 30px;
-            height: 30px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            color: var(--muted-text);
-            text-decoration: none;
-            transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
-        }
-
-        .footer-social a:hover {
-            background: var(--primary-color);
-            color: #fff;
-            border-color: transparent;
-            transform: translateY(-1px);
-        }
-
-        /* Utility */
-        .text-accent {
-            color: var(--primary-color);
-        }
-    </style>
+    <!-- =====================================
+        EXTERNAL LINKS
+    ===================================== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Header/Navigation -->
     <header>
         <div class="container nav">
             <div class="nav-logo">
                 <div class="nav-logo-mark">
-                    <img src="./assets/logo/adarshapathasala.png" alt="Logo">
+                    <img src="./assets/logo/adarshapathasala.png" alt="Adarsha Pathasala Logo">
                 </div>
                 <div>
                     <div>ADARSHA PATHASALA</div>
-                    <small style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted-text);">
-                        CBSE Coaching • Since 2016
-                    </small>
+                    <small>CBSE Coaching • Since 2016</small>
                 </div>
             </div>
 
@@ -1359,6 +127,7 @@
         </div>
     </header>
 
+    <!-- Main Content -->
     <main>
         <!-- Hero / Home -->
         <section id="home">
@@ -1427,7 +196,7 @@
                         <div class="hero-stat-row">
                             <div>
                                 <div class="hero-stat-main">2016 → 2025</div>
-                                <div style="font-size:0.8rem; color:var(--muted-text);">
+                                <div class="hero-stat-sub">
                                     Guiding hundreds of students to success
                                 </div>
                             </div>
@@ -1505,9 +274,9 @@
                             <li>Focuses on discipline, motivation & smart learning techniques.</li>
                         </ul>
                         <p class="founder-quote">
-                            “Every student is unique and full of potential. My goal through Adarsha Pathasala is to guide,
+                            "Every student is unique and full of potential. My goal through Adarsha Pathasala is to guide,
                             support, and empower each learner with the right methods and moral values to succeed in
-                            academics and in life.”
+                            academics and in life."
                         </p>
                     </div>
                 </div>
@@ -1527,10 +296,10 @@
                 </div>
 
                 <div class="faculty-grid">
-                    <!-- 12 Dummy Faculty Cards -->
+                    <!-- Faculty Cards (12 total) -->
                     <div class="faculty-card">
                         <div class="faculty-avatar">
-                            <img src="./assets/faculty/bibhu sundar mahanty.jpg" alt="Faculty 1">
+                            <img src="./assets/faculty/bibhu sundar mahanty.jpg" alt="Bibhu Sundar Mohanty">
                         </div>
                         <div class="faculty-info">
                             <h4>🕯️ Bibhu Sundar Mohanty</h4>
@@ -1541,7 +310,7 @@
 
                     <div class="faculty-card">
                         <div class="faculty-avatar">
-                            <img src="./assets/faculty/M.Srijeet Kumar Rao.jpg" alt="Faculty 2">
+                            <img src="./assets/faculty/M.Srijeet Kumar Rao.jpg" alt="M. Srijeet Kumar Rao">
                         </div>
                         <div class="faculty-info">
                             <h4>M. Srijeet Kumar Rao</h4>
@@ -1552,7 +321,7 @@
 
                     <div class="faculty-card">
                         <div class="faculty-avatar">
-                            <img src="./assets/faculty/Padmalochan Satapathy.jpg" alt="Faculty 3">
+                            <img src="./assets/faculty/Padmalochan Satapathy.jpg" alt="Padmalochan Satapathy">
                         </div>
                         <div class="faculty-info">
                             <h4>Padmalochan Satapathy</h4>
@@ -1563,7 +332,7 @@
 
                     <div class="faculty-card">
                         <div class="faculty-avatar">
-                            <img src="./assets/faculty/Surjyakanta Swain.jpg" alt="Faculty 4">
+                            <img src="./assets/faculty/Surjyakanta Swain.jpg" alt="Surjyakanta Swain">
                         </div>
                         <div class="faculty-info">
                             <h4>Surjyakanta Swain</h4>
@@ -1574,7 +343,7 @@
 
                     <div class="faculty-card">
                         <div class="faculty-avatar">
-                            <img src="./assets/faculty/Pankaj Kumar Behera.jpg" alt="Faculty 5">
+                            <img src="./assets/faculty/Pankaj Kumar Behera.jpg" alt="Pankaj Kumar Behera">
                         </div>
                         <div class="faculty-info">
                             <h4>Pankaj Kumar Behera</h4>
@@ -1585,7 +354,7 @@
 
                     <div class="faculty-card">
                         <div class="faculty-avatar">
-                            <img src="./assets/faculty/Srikant Mohapatra.jpg" alt="Faculty 6">
+                            <img src="./assets/faculty/Srikant Mohapatra.jpg" alt="Srikant Mohapatra">
                         </div>
                         <div class="faculty-info">
                             <h4>Srikant Mohapatra</h4>
@@ -1596,7 +365,7 @@
 
                     <div class="faculty-card">
                         <div class="faculty-avatar">
-                            <img src="./assets/faculty/Deviprasad Satapathy.jpg" alt="Faculty 7">
+                            <img src="./assets/faculty/Deviprasad Satapathy.jpg" alt="Deviprasad Satapathy">
                         </div>
                         <div class="faculty-info">
                             <h4>Deviprasad Satapathy</h4>
@@ -1607,7 +376,7 @@
 
                     <div class="faculty-card">
                         <div class="faculty-avatar">
-                            <img src="./assets/faculty/Sankar Senapati.jpg" alt="Faculty 8">
+                            <img src="./assets/faculty/Sankar Senapati.jpg" alt="Sankar Senapati">
                         </div>
                         <div class="faculty-info">
                             <h4>Sankar Senapati</h4>
@@ -1618,7 +387,7 @@
 
                     <div class="faculty-card">
                         <div class="faculty-avatar">
-                            <img src="./assets/faculty/Jyotiprakash Sahu.jpg" alt="Faculty 9">
+                            <img src="./assets/faculty/Jyotiprakash Sahu.jpg" alt="Jyotiprakash Sahu">
                         </div>
                         <div class="faculty-info">
                             <h4>Jyotiprakash Sahu</h4>
@@ -1629,7 +398,7 @@
 
                     <div class="faculty-card">
                         <div class="faculty-avatar">
-                            <img src="./assets/faculty/Rajesh Gouda.jpg" alt="Faculty 10">
+                            <img src="./assets/faculty/Rajesh Gouda.jpg" alt="Rajesh Gouda">
                         </div>
                         <div class="faculty-info">
                             <h4>Rajesh Gouda</h4>
@@ -1640,7 +409,7 @@
 
                     <div class="faculty-card">
                         <div class="faculty-avatar">
-                            <img src="./assets/faculty/Jasmin Maharana.jpg" alt="Faculty 11">
+                            <img src="./assets/faculty/Jasmin Maharana.jpg" alt="Jasmin Maharana">
                         </div>
                         <div class="faculty-info">
                             <h4>Jasmin Maharana</h4>
@@ -1651,10 +420,10 @@
 
                     <div class="faculty-card">
                         <div class="faculty-avatar">
-                            <img src="./assets/faculty/B.NARAYAN.jpg" alt="Faculty 12">
+                            <img src="./assets/faculty/B.NARAYAN.jpg" alt="B. Narayan">
                         </div>
                         <div class="faculty-info">
-                            <h4>B.NARAYAN</h4>
+                            <h4>B. NARAYAN</h4>
                             <p>D.EL.ED, B.A., OTET, CTET</p>
                             <div class="faculty-tag">FOUNDER</div>
                         </div>
@@ -1690,18 +459,18 @@
                             </a>
                         </div>
                     </div>
-                    <div style="max-width:320px; font-size:0.8rem; color:var(--muted-text);">
+                    <div class="rating-info">
                         ⭐⭐⭐⭐⭐ – Excellent &nbsp; ⭐⭐⭐⭐ – Good &nbsp; ⭐⭐⭐ – Average &nbsp; ⭐⭐ – Below Average &nbsp; ⭐ – Poor
                         <br>Your feedback motivates us to improve every day!
                     </div>
                 </div>
 
                 <div class="feedback-grid">
-                    <!-- Some selected reviews with dummy avatars -->
+                    <!-- Student Feedback Cards -->
                     <div class="feedback-card">
                         <div class="feedback-header">
                             <div class="feedback-avatar">
-                                <img src="./assets/students/Sushree Harapriya Parida.jpg" alt="Student avatar">
+                                <img src="./assets/students/Sushree Harapriya Parida.jpg" alt="Sushree Harapriya Parida">
                             </div>
                             <div>
                                 <div class="feedback-name">Sushree Harapriya Parida</div>
@@ -1710,15 +479,15 @@
                             </div>
                         </div>
                         <div class="feedback-text">
-                            “I'm very grateful to be a part of this institute. Best mentorship with proper focus on academic
-                            improvement and overall growth.”
+                            "I'm very grateful to be a part of this institute. Best mentorship with proper focus on academic
+                            improvement and overall growth."
                         </div>
                     </div>
 
                     <div class="feedback-card">
                         <div class="feedback-header">
                             <div class="feedback-avatar">
-                                <img src="./assets/students/Jasmin Maharana.jpg" alt="Student avatar">
+                                <img src="./assets/students/Jasmin Maharana.jpg" alt="Jasmin Maharana">
                             </div>
                             <div>
                                 <div class="feedback-name">Jasmin Maharana</div>
@@ -1727,15 +496,15 @@
                             </div>
                         </div>
                         <div class="feedback-text">
-                            “This institute helped an average student like me achieve top scores. The excellent teaching, personal
-                            attention and motivation truly shaped my academic journey.”
+                            "This institute helped an average student like me achieve top scores. The excellent teaching, personal
+                            attention and motivation truly shaped my academic journey."
                         </div>
                     </div>
 
                     <div class="feedback-card">
                         <div class="feedback-header">
                             <div class="feedback-avatar">
-                                <img src="./assets/students/Sidharth Dash.jpg" alt="Student avatar">
+                                <img src="./assets/students/Sidharth Dash.jpg" alt="Sidharth Dash">
                             </div>
                             <div>
                                 <div class="feedback-name">Sidharth Dash</div>
@@ -1744,15 +513,15 @@
                             </div>
                         </div>
                         <div class="feedback-text">
-                            “That was an amazing, unforgettable time and a turning point of my life. The knowledge I gained here
-                            helped me succeed in life.”
+                            "That was an amazing, unforgettable time and a turning point of my life. The knowledge I gained here
+                            helped me succeed in life."
                         </div>
                     </div>
 
                     <div class="feedback-card">
                         <div class="feedback-header">
                             <div class="feedback-avatar">
-                                <img src="./assets/students/Jyotirmayee Padhi.jpg" alt="Student avatar">
+                                <img src="./assets/students/Jyotirmayee Padhi.jpg" alt="Jyotirmayee Padhi">
                             </div>
                             <div>
                                 <div class="feedback-name">Jyotirmayee Padhi</div>
@@ -1761,15 +530,15 @@
                             </div>
                         </div>
                         <div class="feedback-text">
-                            “Amazing teaching style! Concepts are explained so clearly that learning becomes easy and enjoyable.
-                            A great place to grow academically and build confidence.”
+                            "Amazing teaching style! Concepts are explained so clearly that learning becomes easy and enjoyable.
+                            A great place to grow academically and build confidence."
                         </div>
                     </div>
 
                     <div class="feedback-card">
                         <div class="feedback-header">
                             <div class="feedback-avatar">
-                                <img src="./assets/students/Prem Prasad Pradhan.jpeg" alt="Student avatar">
+                                <img src="./assets/students/Prem Prasad Pradhan.jpeg" alt="Prem Prasad Pradhan">
                             </div>
                             <div>
                                 <div class="feedback-name">Prem Prasad Pradhan</div>
@@ -1778,15 +547,15 @@
                             </div>
                         </div>
                         <div class="feedback-text">
-                            “Adarsha Pathasala was a key part of my board exam journey. With strong guidance and personal support,
-                            I built a solid foundation and stayed motivated throughout.”
+                            "Adarsha Pathasala was a key part of my board exam journey. With strong guidance and personal support,
+                            I built a solid foundation and stayed motivated throughout."
                         </div>
                     </div>
 
                     <div class="feedback-card">
                         <div class="feedback-header">
                             <div class="feedback-avatar">
-                                <img src="./assets/students/Subhralin Patra.jpg" alt="Student avatar">
+                                <img src="./assets/students/Subhralin Patra.jpg" alt="Subhralin Patra">
                             </div>
                             <div>
                                 <div class="feedback-name">Subhralin Patra</div>
@@ -1795,15 +564,15 @@
                             </div>
                         </div>
                         <div class="feedback-text">
-                            “Teaching methods were clear and effective, and teachers were always supportive. One-to-one mentorship
-                            helped me perform well in my 10th board exams.”
+                            "Teaching methods were clear and effective, and teachers were always supportive. One-to-one mentorship
+                            helped me perform well in my 10th board exams."
                         </div>
                     </div>
 
                     <div class="feedback-card">
                         <div class="feedback-header">
                             <div class="feedback-avatar">
-                                <img src="./assets/students/Simanchala Bisoyi.jpg" alt="Student avatar">
+                                <img src="./assets/students/Simanchala Bisoyi.jpg" alt="Simanchala Bisoyi">
                             </div>
                             <div>
                                 <div class="feedback-name">Simanchala Bisoyi</div>
@@ -1812,15 +581,15 @@
                             </div>
                         </div>
                         <div class="feedback-text">
-                            “One of the best coaching centres I have joined. The staff played a crucial role in my academic journey
-                            with their support and guidance.”
+                            "One of the best coaching centres I have joined. The staff played a crucial role in my academic journey
+                            with their support and guidance."
                         </div>
                     </div>
 
                     <div class="feedback-card">
                         <div class="feedback-header">
                             <div class="feedback-avatar">
-                                <img src="./assets/students/Raj Nandini Dora.jpg" alt="Student avatar">
+                                <img src="./assets/students/Raj Nandini Dora.jpg" alt="Raj Nandini Dora">
                             </div>
                             <div>
                                 <div class="feedback-name">Raj Nandini Dora</div>
@@ -1829,14 +598,14 @@
                             </div>
                         </div>
                         <div class="feedback-text">
-                            “The way of teaching is very easy to understand and the atmosphere is friendly. I'm glad I joined this
-                            coaching and learnt so many things.”
+                            "The way of teaching is very easy to understand and the atmosphere is friendly. I'm glad I joined this
+                            coaching and learnt so many things."
                         </div>
                     </div>
                 </div>
 
                 <div class="feedback-cta">
-                    <p style="font-size:0.9rem; color:var(--muted-text); margin-bottom:0.5rem;">
+                    <p class="feedback-note">
                         💬 We truly value your feedback. Your words help us serve students better.
                     </p>
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQtfxw28OqRaigiYQnc6KjQGNFb0XMn6a3pGQuXUjWTNv0ig/viewform?usp=sharing&ouid=107787972567463578021" 
@@ -1845,7 +614,7 @@
                         rel="noopener noreferrer">
                             ✍️ Submit Your Review
                         </a>
-                    <p style="font-size:0.8rem; color:var(--muted-text); margin-top:0.5rem;">
+                    <p class="thank-you-note">
                         Thank you for your valuable feedback. Keep learning, keep growing!
                     </p>
                 </div>
@@ -1865,64 +634,64 @@
                 </div>
 
                 <div class="memories-grid">
-                    <!-- Dummy images for now; replace with real photos later -->
+                    <!-- Memory Cards -->
                     <div class="memory-card">
-                        <img src="./assets/memories/memory 1.jpg" alt="Celebrations">
+                        <img src="./assets/memories/memory 1.jpg" alt="Classroom Activity">
                         <div class="memory-overlay"></div>
-                        <!--<div class="memory-label">
+                        <div class="memory-label">
                             Classroom Sessions
-                            <span>Concept clarity & active learning</span>
-                        </div>-->
+                            <span>Active learning environment</span>
+                        </div>
                     </div>
 
                     <div class="memory-card">
-                        <img src="./assets/memories/memori 2.jpg" alt="Celebrations">
+                        <img src="./assets/memories/memori 2.jpg" alt="Group Study">
                         <div class="memory-overlay"></div>
-                        <!--<div class="memory-label">
-                            Weekly Tests
-                            <span>Tracking progress & performance</span>
-                        </div>-->
+                        <div class="memory-label">
+                            Group Activities
+                            <span>Collaborative learning</span>
+                        </div>
                     </div>
 
                     <div class="memory-card">
-                        <img src="./assets/memories/memory 3.jpg" alt="Celebrations">
+                        <img src="./assets/memories/memory 3.jpg" alt="Celebration">
                         <div class="memory-overlay"></div>
-                        <!--<div class="memory-label">
-                            Ganesh Puja
-                            <span>Students coming together in devotion</span>
-                        </div>-->
-                    </div>
-
-                    <div class="memory-card">
-                        <img src="./assets/memories/memory 4.jpg" alt="Celebrations">
-                        <div class="memory-overlay"></div>
-                        <!--<div class="memory-label">
-                            Motivational Sessions
-                            <span>Inspiring students to aim higher</span>
-                        </div>-->
-                    </div>
-
-                    <div class="memory-card">
-                        <img src="./assets/memories/memory 5.jpg" alt="Celebrations">
-                        <div class="memory-overlay"></div>
-                        <!--<div class="memory-label">
-                            Group Study
-                            <span>Peer learning & cooperation</span>
-                        </div>-->
-                    </div>
-
-                    <div class="memory-card">
-                        <img src="./assets/memories/memory 6.jpg" alt="Celebrations">
-                        <div class="memory-overlay"></div>
-                        <!--<div class="memory-label">
+                        <div class="memory-label">
                             Celebrations
-                            <span>Success stories & results</span>
-                        </div>-->
+                            <span>Joyful moments together</span>
+                        </div>
+                    </div>
+
+                    <div class="memory-card">
+                        <img src="./assets/memories/memory 4.jpg" alt="Event">
+                        <div class="memory-overlay"></div>
+                        <div class="memory-label">
+                            Special Events
+                            <span>Creating memories</span>
+                        </div>
+                    </div>
+
+                    <div class="memory-card">
+                        <img src="./assets/memories/memory 5.jpg" alt="Interaction">
+                        <div class="memory-overlay"></div>
+                        <div class="memory-label">
+                            Student-Teacher Interaction
+                            <span>Personal guidance</span>
+                        </div>
+                    </div>
+
+                    <div class="memory-card">
+                        <img src="./assets/memories/memory 6.jpg" alt="Achievement">
+                        <div class="memory-overlay"></div>
+                        <div class="memory-label">
+                            Achievements
+                            <span>Celebrating success</span>
+                        </div>
                     </div>
                 </div>
 
                 <p class="memories-text">
-                    These are some of the happiest memories we’ve shared together — moments that will forever remain
+                    These are some of the happiest memories we've shared together — moments that will forever remain
                     close to our hearts and part of the legacy of our institution.
                 </p>
             </div>
@@ -1994,75 +763,72 @@
                         </div>
                     </div>
                 </div>
+
                 <h3 class="section-title">Our Results (2018–2025)</h3>
-
                 <div class="result-gallery">
+                    <div class="result-card">
+                        <img src="./assets/result/2018-19.jpg" alt="2018–19 Result">
+                        <div class="result-overlay"></div>
+                        <div class="result-label">
+                            2018–19
+                            <span>Success Stories & Results</span>
+                        </div>
+                    </div>
 
-    <div class="result-card">
-        <img src="./assets/result/2018-19.jpg" alt="2018–19 Result">
-        <div class="result-overlay"></div>
-        <div class="result-label">
-            2018–19
-            <span>Success Stories & Results</span>
-        </div>
-    </div>
+                    <div class="result-card">
+                        <img src="./assets/result/2019-20.jpg" alt="2019–20 Result">
+                        <div class="result-overlay"></div>
+                        <div class="result-label">
+                            2019–20
+                            <span>Success Stories & Results</span>
+                        </div>
+                    </div>
 
-    <div class="result-card">
-        <img src="./assets/result/2019-20.jpg" alt="2019–20 Result">
-        <div class="result-overlay"></div>
-        <div class="result-label">
-            2019–20
-            <span>Success Stories & Results</span>
-        </div>
-    </div>
+                    <div class="result-card">
+                        <img src="./assets/result/2020-21.png" alt="2020–21 Result">
+                        <div class="result-overlay"></div>
+                        <div class="result-label">
+                            2020–21
+                            <span>Success Stories & Results</span>
+                        </div>
+                    </div>
 
-    <div class="result-card">
-        <img src="./assets/result/2020-21.png" alt="2020–21 Result">
-        <div class="result-overlay"></div>
-        <div class="result-label">
-            2020–21
-            <span>Success Stories & Results</span>
-        </div>
-    </div>
+                    <div class="result-card">
+                        <img src="./assets/result/2021-22.png" alt="2021–22 Result">
+                        <div class="result-overlay"></div>
+                        <div class="result-label">
+                            2021–22
+                            <span>Success Stories & Results</span>
+                        </div>
+                    </div>
 
-    <div class="result-card">
-        <img src="./assets/result/2021-22.png" alt="2021–22 Result">
-        <div class="result-overlay"></div>
-        <div class="result-label">
-            2021–22
-            <span>Success Stories & Results</span>
-        </div>
-    </div>
+                    <div class="result-card">
+                        <img src="./assets/result/2022-23.jpg" alt="2022–23 Result">
+                        <div class="result-overlay"></div>
+                        <div class="result-label">
+                            2022–23
+                            <span>Success Stories & Results</span>
+                        </div>
+                    </div>
 
-    <div class="result-card">
-        <img src="./assets/result/2022-23.jpg" alt="2022–23 Result">
-        <div class="result-overlay"></div>
-        <div class="result-label">
-            2022–23
-            <span>Success Stories & Results</span>
-        </div>
-    </div>
+                    <div class="result-card">
+                        <img src="./assets/result/2023-24.jpg" alt="2023–24 Result">
+                        <div class="result-overlay"></div>
+                        <div class="result-label">
+                            2023–24
+                            <span>Success Stories & Results</span>
+                        </div>
+                    </div>
 
-    <div class="result-card">
-        <img src="./assets/result/2023-24.jpg" alt="2023–24 Result">
-        <div class="result-overlay"></div>
-        <div class="result-label">
-            2023–24
-            <span>Success Stories & Results</span>
-        </div>
-    </div>
-
-    <div class="result-card">
-        <img src="./assets/result/2024-25.jpg" alt="2024–25 Result">
-        <div class="result-overlay"></div>
-        <div class="result-label">
-            2024–25
-            <span>Success Stories & Results</span>
-        </div>
-    </div>
-
-</div>
-
+                    <div class="result-card">
+                        <img src="./assets/result/2024-25.jpg" alt="2024–25 Result">
+                        <div class="result-overlay"></div>
+                        <div class="result-label">
+                            2024–25
+                            <span>Success Stories & Results</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -2073,7 +839,7 @@
                     <div class="section-kicker">Contact</div>
                     <h2 class="section-title">Get in Touch / Enroll Now</h2>
                     <p class="section-subtitle">
-                        Have questions about admissions, classes or timings? Reach out to us — we’re here to help and guide you.
+                        Have questions about admissions, classes or timings? Reach out to us — we're here to help and guide you.
                     </p>
                 </div>
 
@@ -2109,36 +875,33 @@
                             <a href="https://www.google.com/maps/dir//Beguniyapada,+Barida,+Odisha+761031/@19.6754074,85.0530184,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3a180797bc2ac115:0xb4a6c7b104d8c4e4!2m2!1d84.9869093!2d19.6346914?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            style="color: var(--primary-color); text-decoration: underline;">
+                            class="map-link">
                                 Google Maps
                             </a>.
                         </p>
 
-                        <hr style="border:none; border-top:1px dashed var(--border-color); margin:1rem 0;">
+                        <hr>
 
                         <h3>Website Editor</h3>
-                        <p style="font-size:0.9rem; color:var(--muted-text);">
-            <div class="editor-profile">
-            <img src="./assets/students/Prem.jpeg" alt="Prem Prasad Pradhan">
-                <div class="editor-text">
-                    <strong style="font-size:1rem;">Prem Prasad Pradhan</strong><br>
-                    Former student of Adarsha Pathasala | B.Tech Student at NIST<br>
-                    Website editor & designer with 1.5 years of design experience.<br>
-                    Proud to give back to this institute through its digital presence.<br><br>
+                        <div class="editor-profile">
+                            <img src="./assets/students/Prem.jpeg" alt="Prem Prasad Pradhan">
+                            <div class="editor-text">
+                                <strong>Prem Prasad Pradhan</strong><br>
+                                Former student of Adarsha Pathasala | B.Tech Student at NIST<br>
+                                Website editor & designer with 1.5 years of design experience.<br>
+                                Proud to give back to this institute through its digital presence.<br><br>
 
-                    🌐 Website:
-                    <a href="https://www.mrprem.in" target="_blank" rel="noopener noreferrer">
-                        Prem Prasad Pradhan
-                    </a><br>
+                                🌐 Website:
+                                <a href="https://www.mrprem.in" target="_blank" rel="noopener noreferrer">
+                                    Prem Prasad Pradhan
+                                </a><br>
 
-                    💬 WhatsApp:
-                    <a href="https://wa.me/917653057834?text=Hi" target="_blank" rel="noopener noreferrer">
-                        Chat with me
-                    </a>
-                </div>
-            </div>
-
-
+                                💬 WhatsApp:
+                                <a href="https://wa.me/917653057834?text=Hi" target="_blank" rel="noopener noreferrer">
+                                    Chat with me
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="card">
@@ -2196,15 +959,12 @@
     <!-- Footer -->
     <footer>
         <div class="footer-grid">
-
             <div>
                 <h3 class="footer-title">ADARSHA PATHASALA</h3>
                 <p>
                     Providing quality CBSE coaching for classes 6 to 10 since 2016.
                     Building strong foundations for academic success in Beguniapada, Ganjam.
                 </p>
-
-                
             </div>
 
             <div>
@@ -2233,141 +993,31 @@
                 <h3 class="footer-title">Contact Info</h3>
                 <p><i class="fa-solid fa-location-dot"></i> Beguniapada, Ganjam, Odisha</p>
                 <p><i class="fa-solid fa-clock"></i> 6:30 AM – 8:00 PM (SUN – SAT)</p>
-                <p><i class="fa-solid fa-phone"></i>+91 94391 12094</p>
+                <p><i class="fa-solid fa-phone"></i> +91 94391 12094</p>
             </div>
-
         </div>
 
         <div class="footer-bottom">
             <div class="footer-social">
                 <a href="mailto:adarshapathasala@gmail.com" target="_blank" rel="noopener noreferrer">
-                <img src="./assets/app-icon/gmail.png" alt="gmail" class="icon-img">
-            </a>
-
-            <!-- Facebook -->
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                <img src="./assets/app-icon/facebook.png" alt="facebook" class="icon-img">
-            </a>
-
-            <!-- YouTube -->
-            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
-                <img src="./assets/app-icon/youtube.png" alt="facebook" class="icon-img">
-            </a>
-
-            <!-- WhatsApp -->
-            <a href="https://wa.me/919439112094?text=Hi" target="_blank" rel="noopener noreferrer">
-                <img src="./assets/app-icon/whatsapp.png" alt="facebook" class="icon-img">
-            </a>
-        </div>
+                    <img src="./assets/app-icon/gmail.png" alt="gmail" class="icon-img">
+                </a>
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                    <img src="./assets/app-icon/facebook.png" alt="facebook" class="icon-img">
+                </a>
+                <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+                    <img src="./assets/app-icon/youtube.png" alt="youtube" class="icon-img">
+                </a>
+                <a href="https://wa.me/919439112094?text=Hi" target="_blank" rel="noopener noreferrer">
+                    <img src="./assets/app-icon/whatsapp.png" alt="whatsapp" class="icon-img">
+                </a>
+            </div>
             © 2025 Adarsha Pathasala. All Rights Reserved. <br>
-            Designed & Maintained by the Adarsha Pathasala Web Team <br>
+            Designed & Maintained by the Adarsha Pathasala Web Team
         </div>
-            
     </footer>
 
-
-
-    <script>
-        // ---------------------------
-        // Mobile Navbar Toggle
-        // ---------------------------
-        const navToggle = document.getElementById('navToggle');
-        const navLinks = document.getElementById('navLinks');
-
-        navToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-            navToggle.innerHTML = navLinks.classList.contains('open')
-                ? '<i class="fa-solid fa-xmark"></i>'
-                : '<i class="fa-solid fa-bars"></i>';
-        });
-
-        // Close nav on link click (mobile)
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navLinks.classList.contains('open')) {
-                    navLinks.classList.remove('open');
-                    navToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
-                }
-            });
-        });
-
-        // ---------------------------
-        // Dark / Light Mode Toggle
-        // ---------------------------
-        const modeToggle = document.getElementById('modeToggle');
-        const modeIcon = document.getElementById('modeIcon');
-        const modeText = document.getElementById('modeText');
-
-        function applyTheme(theme) {
-            if (theme === 'dark') {
-                document.body.classList.add('dark-theme');
-                modeIcon.className = 'fa-regular fa-sun';
-                modeText.textContent = 'Light';
-            } else {
-                document.body.classList.remove('dark-theme');
-                modeIcon.className = 'fa-regular fa-moon';
-                modeText.textContent = 'Dark';
-            }
-        }
-
-        // Load theme from localStorage
-        const savedTheme = localStorage.getItem('ap-theme') || 'light';
-        applyTheme(savedTheme);
-
-        modeToggle.addEventListener('click', () => {
-            const current = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
-            const next = current === 'dark' ? 'light' : 'dark';
-            applyTheme(next);
-            localStorage.setItem('ap-theme', next);
-        });
-
-        // ---------------------------
-        // Contact Form -> Google Apps Script
-        // ---------------------------
-        const contactForm = document.getElementById('contactForm');
-        const formStatus = document.getElementById('formStatus');
-        const submitBtn = document.getElementById('submitBtn');
-
-        // TODO: Replace with your actual deployed Apps Script Web App URL
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyxAGlV0A8ykb_FwvwzTRFwKEkJCMdYwxz-XtnP7KnjBX1GHiH--W-GEQzgXIc3YJHv/exec";
-
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            if (!SCRIPT_URL || SCRIPT_URL === "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL") {
-                formStatus.textContent = "⚠️ Please configure the Apps Script URL in the code before using the form.";
-                formStatus.className = "form-status error";
-                return;
-            }
-
-            formStatus.textContent = "";
-            formStatus.className = "form-status";
-            submitBtn.disabled = true;
-            submitBtn.textContent = "Sending...";
-
-            try {
-                const formData = new FormData(contactForm);
-                const response = await fetch(SCRIPT_URL, {
-                    method: "POST",
-                    body: formData,
-                });
-
-                if (response.ok) {
-                    formStatus.textContent = "✅ Thank you! Your message has been sent successfully.";
-                    formStatus.className = "form-status success";
-                    contactForm.reset();
-                } else {
-                    throw new Error("Network response was not ok");
-                }
-            } catch (error) {
-                console.error(error);
-                formStatus.textContent = "❌ Something went wrong. Please try again later.";
-                formStatus.className = "form-status error";
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
-            }
-        });
-    </script>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
