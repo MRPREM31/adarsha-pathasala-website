@@ -1,103 +1,60 @@
-const API_URL = "https://adarshapathasala.netlify.app/.netlify/functions/chatbot";
-
-const chatBox = document.getElementById("chatBox");
-const input = document.getElementById("userInput");
-
-// Load chat history
-window.onload = () => {
-    const history = JSON.parse(localStorage.getItem("chatHistory") || "[]");
-    history.forEach(msg => addMessage(msg.text, msg.sender, false));
-    welcomeMessage();
-};
-
-function saveHistory() {
-    const messages = [...chatBox.children].map(m => ({
-        text: m.innerText,
-        sender: m.classList.contains("user") ? "user" : "bot"
-    }));
-
-    localStorage.setItem("chatHistory", JSON.stringify(messages));
-}
-
-function addMessage(text, sender, save = true) {
-    const div = document.createElement("div");
-    div.className = `message ${sender}`;
-    div.innerText = text;
-    chatBox.appendChild(div);
-
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-    if (save) saveHistory();
-}
-
-function addTyping() {
-    const t = document.createElement("div");
-    t.className = "message bot typing";
-    t.id = "typing";
-    t.innerText = "Typing...";
-    chatBox.appendChild(t);
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
-
-function removeTyping() {
-    const t = document.getElementById("typing");
-    if (t) t.remove();
-}
-
-async function sendMessage() {
-    const text = input.value.trim();
-    if (!text) return;
-
-    addMessage(text, "user");
-    input.value = "";
-
-    addTyping();
-
+export async function handler(event, context) {
     try {
-        const res = await fetch(API_URL, {
+        const body = JSON.parse(event.body || "{}");
+        const userMessage = body.message || "Hello";
+
+        const apiKey = process.env.GROQ_API_KEY;
+
+        if (!apiKey) {
+            return {
+                statusCode: 500,
+                body: JSON.stringify({ reply: "❌ GROQ_API_KEY missing on server!" })
+            };
+        }
+
+        // CALL GROQ API
+        const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: text })
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: "llama3.1-8b-instant",
+                messages: [
+                    {
+                        role: "system",
+                        content:
+                        "You are the official AI Assistant of Adarsha Pathasala. Answer clearly about admissions, class timings, faculty, fees, results, address, and institute details."
+                    },
+                    { role: "user", content: userMessage }
+                ],
+                max_tokens: 250
+            })
         });
 
-        const data = await res.json();
+        const data = await groqRes.json();
 
-        removeTyping();
-        addMessage(data.reply, "bot");
+        console.log("GROQ RAW RESPONSE:", data); // Debug
 
-    } catch (err) {
-        removeTyping();
-        addMessage("⚠️ Network error. Try again later.", "bot");
+        // FIX: Correct path for Groq response
+        const replyText =
+            data?.choices?.[0]?.message?.content ??
+            data?.choices?.[0]?.delta?.content ??
+            "Sorry, I couldn't get a response.";
+
+        return {
+            statusCode: 200,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ reply: replyText })
+        };
+
+    } catch (error) {
+        console.error("SERVER ERROR:", error);
+        return {
+            statusCode: 500,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ reply: "⚠️ Server error. Try again later." })
+        };
     }
 }
-
-// Quick question buttons
-function quickAsk(q) {
-    input.value = q;
-    sendMessage();
-}
-
-// Voice Input
-function startVoice() {
-    const recog = new webkitSpeechRecognition();
-    recog.lang = "en-IN";
-    recog.start();
-
-    recog.onresult = e => {
-        input.value = e.results[0][0].transcript;
-        sendMessage();
-    };
-}
-
-// Welcome Message
-function welcomeMessage() {
-    if (!localStorage.getItem("welcomed")) {
-        addMessage("👋 Hello! I am your Adarsha Pathasala AI Assistant. How can I help you today?", "bot");
-        localStorage.setItem("welcomed", true);
-    }
-}
-
-// Theme toggle
-document.getElementById("themeToggle").onclick = () => {
-    document.body.classList.toggle("dark");
-};
