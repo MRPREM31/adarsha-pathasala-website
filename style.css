@@ -128,6 +128,15 @@ body:not(.dark-theme) header {
     background: linear-gradient(to bottom, rgba(248, 250, 252, 0.95), rgba(248, 250, 252, 0.75));
 }
 
+.brand-link {
+    text-decoration: none;        /* remove underline */
+    color: inherit !important;    /* inherit parent color */
+}
+
+.brand-link div {
+    color: inherit !important;    /* ensures white/black based on theme */
+}
+
 .nav {
     display: flex;
     align-items: center;
