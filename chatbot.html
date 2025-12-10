@@ -1,53 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Adarsha Pathasala – AI Chat Assistant</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="./assets/logo/adarshapathasala.png">
+<title>Adarsha Pathasala – AI Assistant</title>
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Chatbot Styles -->
-    <link rel="stylesheet" href="chatbot.css">
+<style>
+/* -----------------------------------
+   THEME COLORS
+----------------------------------- */
+:root {
+    --bg: #0b0f19;
+    --card: #111726;
+    --border: rgba(120,140,255,0.35);
+    --text: #e9e9e9;
+    --blue: #3b43d6;
+    --blue-light: #7682ff;
+    --bubble-user: #2a3350;
+    --bubble-bot: #1a2033;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* -----------------------------------
+   HEADER
+----------------------------------- */
+.header {
+    background: linear-gradient(90deg, var(--blue), var(--blue-light));
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.header-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.back-btn {
+    margin-left: auto;
+    background: rgba(255,255,255,0.25);
+    padding: 6px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+.back-btn:hover {
+    background: white;
+    color: var(--blue);
+}
+
+/* -----------------------------------
+   CHAT CONTAINER
+----------------------------------- */
+.chat-wrapper {
+    max-width: 900px;
+    margin: 20px auto 0 auto;
+    background: var(--card);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 0 25px rgba(120,140,255,0.12);
+    height: calc(100vh - 150px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Chat messages scroll area */
+.chat-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* Messages */
+.message {
+    padding: 12px 18px;
+    border-radius: 14px;
+    margin: 12px 0;
+    max-width: 80%;
+    line-height: 1.6;
+    animation: fadeIn 0.25s ease;
+}
+
+.user { background: var(--bubble-user); margin-left: auto; }
+.bot  { background: var(--bubble-bot); border-left: 3px solid var(--blue-light); }
+
+/* Quick buttons */
+.quick-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 12px 20px 0 20px;
+}
+
+.quick-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.quick-btn:hover { background: var(--blue-light); }
+
+/* -----------------------------------
+   INPUT FIXED AT BOTTOM
+----------------------------------- */
+.input-box {
+    padding: 12px 20px;
+    border-top: 1px solid var(--border);
+    background: rgba(0,0,0,0.35);
+    display: flex;
+    gap: 10px;
+    backdrop-filter: blur(6px);
+}
+
+.input-box input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    color: var(--text);
+    outline: none;
+}
+
+.send-btn {
+    background: var(--blue-light);
+    border: none;
+    padding: 0 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+.send-btn:hover { background: var(--blue); }
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* MOBILE FIXES */
+@media (max-width: 600px) {
+
+    .header-title {
+        font-size: 1rem;
+    }
+
+    .header img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .chat-wrapper {
+        height: calc(100vh - 120px);
+        border-radius: 0;
+    }
+
+    .message { max-width: 95%; }
+
+    .quick-buttons {
+        justify-content: center;
+    }
+
+    .quick-btn {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
+
+    .input-box input {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+</style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+<div class="header">
+    <img src="./assets/logo/AI-Robot.png.png" alt="Bot Icon">
+    <div class="header-title">Adarsha Pathasala – AI Assistant</div>
+    <div class="back-btn" onclick="window.location.href='index.html'">← Back to Home</div>
+</div>
+
+<!-- MAIN CHAT BOX -->
 <div class="chat-wrapper">
 
-    <!-- Header -->
-    <div class="chat-header">
-        <img src="./assets/logo/AI-Robot.png.png" class="bot-avatar">
-        <div>
-            <h2>Adarsha Pathasala AI Assistant</h2>
-            <p>Your smart guide for classes, admissions, faculty & results</p>
-        </div>
-
-        <button id="themeToggle" class="theme-btn">
-            <i class="fa-solid fa-moon"></i>
-        </button>
-    </div>
-
-    <!-- Chat Messages -->
-    <div id="chatBox" class="chat-box"></div>
-
-    <!-- Quick Suggestions -->
+    <!-- Quick Buttons -->
     <div class="quick-buttons">
-        <button onclick="quickAsk('What are the class timings?')">⏰ Class Timings</button>
-        <button onclick="quickAsk('How to take admission?')">📘 Admission</button>
-        <button onclick="quickAsk('Tell about faculty')">👨‍🏫 Faculties</button>
-        <button onclick="quickAsk('Where is the institute located?')">📍 Location</button>
+        <div class="quick-btn" onclick="sendQuick('What are the class timings?')">Class Timings</div>
+        <div class="quick-btn" onclick="sendQuick('How to take admission?')">Admission</div>
+        <div class="quick-btn" onclick="sendQuick('Tell me about the faculties.')">Faculties</div>
+        <div class="quick-btn" onclick="sendQuick('Where is the institute located?')">Location</div>
+        <div class="quick-btn" onclick="sendQuick('What is the fee structure?')">Fees</div>
     </div>
 
-    <!-- Input Area -->
-    <div class="input-area">
-        <button class="mic-btn" onclick="startVoice()">
-            <i class="fa-solid fa-microphone"></i>
-        </button>
+    <!-- Chat Scroll Area -->
+    <div id="chat" class="chat-area"></div>
 
-        <textarea id="userInput" placeholder="Type your message..."></textarea>
-
+    <!-- INPUT ALWAYS AT BOTTOM -->
+    <div class="input-box">
+        <input id="userInput" placeholder="Ask something..." 
+               onkeydown="if(event.key==='Enter'){ sendMessage(); }">
         <button class="send-btn" onclick="sendMessage()">
             <i class="fa-solid fa-paper-plane"></i>
         </button>
@@ -55,7 +236,47 @@
 
 </div>
 
-<script src="chatbot.js"></script>
+<!-- JAVASCRIPT -->
+<script>
+function addMessage(text, sender) {
+    const chat = document.getElementById("chat");
+    const msg = document.createElement("div");
+    msg.className = "message " + sender;
+    msg.innerText = text;
+    chat.appendChild(msg);
+    chat.scrollTop = chat.scrollHeight;
+}
+
+async function sendMessage() {
+    let input = document.getElementById("userInput");
+    let text = input.value.trim();
+    if (text === "") return;
+
+    addMessage(text, "user");
+    input.value = "";
+
+    addMessage("Typing...", "bot");
+
+    const response = await fetch("/.netlify/functions/chatbot", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text })
+    });
+
+    const data = await response.json();
+
+    document.querySelectorAll(".bot").forEach(el => {
+        if (el.innerText === "Typing...") el.remove();
+    });
+
+    addMessage(data.reply, "bot");
+}
+
+function sendQuick(text) {
+    document.getElementById("userInput").value = text;
+    sendMessage();
+}
+</script>
 
 </body>
 </html>
