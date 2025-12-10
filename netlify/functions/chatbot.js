@@ -1,8 +1,6 @@
-// Netlify requires this import in some cases
-import fetch from "node-fetch";
-
 export async function handler(event, context) {
     try {
+        // Parse request
         const body = JSON.parse(event.body || "{}");
         const userMessage = body.message || "Hello";
 
@@ -11,12 +9,11 @@ export async function handler(event, context) {
         if (!apiKey) {
             return {
                 statusCode: 500,
-                body: JSON.stringify({
-                    reply: "❌ GROQ_API_KEY missing on Netlify server!"
-                })
+                body: JSON.stringify({ reply: "❌ GROQ_API_KEY missing on server!" })
             };
         }
 
+        // ⛔ No node-fetch — Netlify already provides fetch()
         const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -28,8 +25,7 @@ export async function handler(event, context) {
                 messages: [
                     {
                         role: "system",
-                        content:
-"💬 You are Adarsha Pathasala AI Assistant.\nHelp with admissions, classes, fees, location, results & faculty."
+                        content: "You are Adarsha Pathasala AI Assistant. Help with admissions, classes, timings, results, fees, etc."
                     },
                     { role: "user", content: userMessage }
                 ],
@@ -47,8 +43,8 @@ export async function handler(event, context) {
             })
         };
 
-    } catch (err) {
-        console.error("SERVER ERROR:", err);
+    } catch (error) {
+        console.error("SERVER ERROR:", error);
         return {
             statusCode: 500,
             headers: { "Content-Type": "application/json" },
