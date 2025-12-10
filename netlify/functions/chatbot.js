@@ -12,7 +12,6 @@ export async function handler(event, context) {
             };
         }
 
-        // CALL GROQ API
         const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -20,12 +19,11 @@ export async function handler(event, context) {
                 "Authorization": `Bearer ${apiKey}`
             },
             body: JSON.stringify({
-                model: "llama3.1-8b-instant",
+                model: "llama-3.1-8b-instant",
                 messages: [
                     {
                         role: "system",
-                        content:
-                        "You are the official AI Assistant of Adarsha Pathasala. Answer clearly about admissions, class timings, faculty, fees, results, address, and institute details."
+                        content: "You are Adarsha Pathasala AI Assistant. Help with admissions, classes, timings, results, fees, etc."
                     },
                     { role: "user", content: userMessage }
                 ],
@@ -35,18 +33,14 @@ export async function handler(event, context) {
 
         const data = await groqRes.json();
 
-        console.log("GROQ RAW RESPONSE:", data); // Debug
-
-        // FIX: Correct path for Groq response
-        const replyText =
-            data?.choices?.[0]?.message?.content ??
-            data?.choices?.[0]?.delta?.content ??
-            "Sorry, I couldn't get a response.";
+        console.log("GROQ RAW RESPONSE:", data); // 🟢 Debug log
 
         return {
             statusCode: 200,
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ reply: replyText })
+            body: JSON.stringify({
+                reply: data?.choices?.[0]?.message?.content || "I'm here to help!"
+            })
         };
 
     } catch (error) {
@@ -54,7 +48,9 @@ export async function handler(event, context) {
         return {
             statusCode: 500,
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ reply: "⚠️ Server error. Try again later." })
+            body: JSON.stringify({
+                reply: "⚠️ Server error. Try again later."
+            })
         };
     }
 }
