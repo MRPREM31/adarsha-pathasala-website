@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
 
+# Disallow Netlify system/internal directories
+Disallow: /netlify/
+Disallow: /netlify/functions/
+Disallow: /_internal/
+Disallow: /_redirects
+Disallow: /_headers
+
+# Allow important assets
+Allow: /assets/
+Allow: /assets/logo/
+Allow: /assets/og/
+Allow: /assets/memories/
+Allow: /assets/students/
+Allow: /assets/result/
+
+# Sitemap location
 Sitemap: https://adarshapathasala.netlify.app/sitemap.xml
