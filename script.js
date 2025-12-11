@@ -9,6 +9,20 @@ navToggle.addEventListener('click', () => {
     navToggle.innerText = navLinks.classList.contains('open') ? '×' : '⋮';
 });
 
+// ---------------------------
+// Close menu when clicking outside
+// ---------------------------
+document.addEventListener("click", function (e) {
+    const isClickInsideMenu = navLinks.contains(e.target);
+    const isClickOnToggle = navToggle.contains(e.target);
+
+    if (!isClickInsideMenu && !isClickOnToggle) {
+        if (navLinks.classList.contains("open")) {
+            navLinks.classList.remove("open");
+            navToggle.innerText = "⋮";
+        }
+    }
+});
 
 // Close nav on link click (mobile)
 document.querySelectorAll('.nav-links a').forEach(link => {
