@@ -8,12 +8,15 @@
 <link rel="icon" type="image/png" href="./assets/logo/AI-Robot.png.png">
 
 <!-- SEO -->
-<meta name="description" content="Adarsha Pathasala AI Assistant – Ask about admissions, timings, faculties, fees and institute info.">
+<meta name="description" content="Adarsha Pathasala AI Assistant – Ask about admissions, class timings, faculties, results, fees, location and institute information.">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+/* -----------------------------------------------
+   Theme System
+------------------------------------------------ */
 :root {
     --bg: #0b0f19;
     --card: #111726;
@@ -37,27 +40,31 @@ body {
     margin: 0;
     height: 100vh;
     overflow: hidden;
+    font-family: "Poppins", sans-serif;
     background: var(--bg);
     color: var(--text);
-    font-family: "Poppins", sans-serif;
 }
 
-/* NAVBAR */
+/* -----------------------------------------------
+   NAV BAR
+------------------------------------------------ */
 .navbar {
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 14px 20px;
-    backdrop-filter: blur(12px);
-    background: rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.32);
+    backdrop-filter: blur(14px);
 }
+
 .navbar img {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    object-fit: cover;
     border: 2px solid rgba(255,255,255,0.25);
+    object-fit: cover;
 }
+
 .nav-title {
     flex-grow: 1;
     font-size: 1.4rem;
@@ -67,19 +74,64 @@ body {
     .nav-title { font-size: 1.1rem; }
 }
 
-.back-btn, .clear-btn {
+.back-btn {
     padding: 6px 14px;
     border-radius: 20px;
-    border: 1px solid var(--border);
     background: rgba(255,255,255,0.15);
+    border: 1px solid var(--border);
     cursor: pointer;
 }
-.back-btn:hover, .clear-btn:hover {
-    background: var(--accent);
-    color: white;
+.back-btn:hover { background: var(--accent); color: #fff; }
+
+/* Menu icon */
+.menu-btn {
+    cursor: pointer;
+    font-size: 1.6rem;
+    padding: 8px;
 }
 
-/* CHAT AREA FIXED LAYOUT */
+/* -----------------------------------------------
+   HOVER MENU PANEL
+------------------------------------------------ */
+.menu-panel {
+    position: absolute;
+    right: 15px;
+    top: 70px;
+    width: 240px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 12px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 0 25px rgba(0,0,0,0.25);
+    z-index: 50;
+}
+
+.menu-item {
+    padding: 10px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+}
+.menu-item:last-child { border-bottom: none; }
+
+.menu-item:hover {
+    background: var(--accent);
+    color: white;
+    border-radius: 8px;
+}
+
+/* Footer inside menu */
+.menu-footer {
+    text-align: center;
+    font-size: 0.75rem;
+    margin-top: 10px;
+    opacity: 0.75;
+}
+
+/* -----------------------------------------------
+   CHAT AREA
+------------------------------------------------ */
 .chat-container {
     height: calc(100vh - 70px);
     display: flex;
@@ -87,22 +139,20 @@ body {
 }
 
 .quick-area {
-    flex-shrink: 0;
     padding: 10px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
 }
-
 .quick-btn {
-    font-size: 0.85rem;
     background: rgba(255,255,255,0.08);
     padding: 6px 14px;
     border-radius: 20px;
     border: 1px solid var(--border);
     cursor: pointer;
+    font-size: 0.85rem;
 }
 .quick-btn:hover { background: var(--accent); color: white; }
 
@@ -110,13 +160,12 @@ body {
     flex: 1;
     overflow-y: auto;
     padding: 15px 20px;
-    scroll-behavior: smooth;
 }
 
 .message {
     max-width: 80%;
-    margin-bottom: 15px;
     padding: 12px 15px;
+    margin-bottom: 15px;
     border-radius: 12px;
     line-height: 1.6;
     animation: fadeIn .25s ease;
@@ -129,55 +178,71 @@ body {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* INPUT BAR FIXED LIKE WHATSAPP */
+/* -----------------------------------------------
+   INPUT AREA
+------------------------------------------------ */
 .input-bar {
-    flex-shrink: 0;
+    padding: 12px;
     display: flex;
     gap: 10px;
-    padding: 12px;
-    border-top: 1px solid var(--border);
     background: var(--card);
+    border-top: 1px solid var(--border);
 }
 
 .input-bar input {
     flex: 1;
     padding: 12px 14px;
+    font-size: 1rem;
+    background: rgba(255,255,255,0.07);
     border: 1px solid var(--border);
     border-radius: 10px;
-    background: rgba(255,255,255,0.08);
     color: var(--text);
-    font-size: 1rem;
     outline: none;
 }
 
 .send {
-    width: 50px;
+    width: 52px;
+    background: var(--accent);
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--accent);
-    border-radius: 10px;
     cursor: pointer;
 }
-.send i { color: white; font-size: 1.2rem; }
+.send i { color: #fff; font-size: 1.2rem; }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
+<!-- NAV BAR -->
 <div class="navbar">
-    <img src="./assets/logo/chatbot_ai.png">
+    <img src="./assets/logo/chatbot_ai.png" alt="Bot">
     <div class="nav-title">AI Assistant</div>
-    <div class="clear-btn" onclick="clearChat()">Clear</div>
+
+    
     <div class="back-btn" onclick="location.href='index.html'">← Back</div>
+    <div class="menu-btn" onclick="toggleMenu()">⋮</div>
 </div>
 
+<!-- Hover Menu -->
+<div id="menuPanel" class="menu-panel">
+    <div class="menu-item" onclick="toggleTheme()">🌗 Toggle Day/Night</div>
+    <div class="menu-item" onclick="clearChat()">🧹 Clear Chat</div>
+    <div class="menu-item" onclick="location.href='index.html'">🏠 Back to Home</div>
+
+    <div class="menu-footer">
+        © 2025 Adarsha Pathasala<br>
+        Designed by Web Team (mrprem.in)
+    </div>
+</div>
+
+<!-- CHAT SYSTEM -->
 <div class="chat-container">
 
     <!-- Quick Buttons -->
     <div class="quick-area">
-        <div class="quick-btn" onclick="quick('What are the class timings?')">Class Timings</div>
+        <div class="quick-btn" onclick="quick('What are class timings?')">Class Timings</div>
         <div class="quick-btn" onclick="quick('How to take admission?')">Admission</div>
         <div class="quick-btn" onclick="quick('Tell me about faculties')">Faculties</div>
         <div class="quick-btn" onclick="quick('Where is the institute located?')">Location</div>
@@ -185,26 +250,41 @@ body {
     </div>
 
     <!-- Chat Messages -->
-    <div class="chat-box" id="chatBox"></div>
+    <div id="chatBox" class="chat-box"></div>
 
-    <!-- Input -->
+    <!-- Input Field -->
     <div class="input-bar">
         <input id="userInput" placeholder="Ask something..." onkeydown="if(event.key==='Enter'){sendMessage();}">
-        <div class="send" onclick="sendMessage()">
-            <i class="fa-solid fa-paper-plane"></i>
-        </div>
+        <div class="send" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></div>
     </div>
 </div>
 
 <script>
-/* THEME SAVE */
+/* -------------------------------------------
+   Menu toggle
+------------------------------------------- */
+function toggleMenu() {
+    const panel = document.getElementById("menuPanel");
+    panel.style.display = panel.style.display === "flex" ? "none" : "flex";
+}
+
+/* -------------------------------------------
+   Theme Toggle
+------------------------------------------- */
+function toggleTheme() {
+    document.body.classList.toggle("light");
+    localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+}
 if (localStorage.getItem("theme") === "light") {
     document.body.classList.add("light");
 }
 
-/* Chat History */
+/* -------------------------------------------
+   Chat History Load
+------------------------------------------- */
 let chatBox = document.getElementById("chatBox");
 let history = JSON.parse(localStorage.getItem("aps_chat") || "[]");
+
 history.forEach(msg => addMessage(msg.text, msg.sender));
 
 function saveMessage(text, sender) {
@@ -212,7 +292,9 @@ function saveMessage(text, sender) {
     localStorage.setItem("aps_chat", JSON.stringify(history));
 }
 
-/* Send Message */
+/* -------------------------------------------
+   Send Message
+------------------------------------------- */
 async function sendMessage() {
     let input = document.getElementById("userInput");
     let text = input.value.trim();
@@ -226,26 +308,28 @@ async function sendMessage() {
 
     const res = await fetch("/.netlify/functions/chatbot", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: {"Content-Type":"application/json"},
         body: JSON.stringify({ message: text })
     });
 
     const data = await res.json();
 
-    document.querySelectorAll(".bot").forEach(el => { if (el.innerText === "Typing...") el.remove(); });
+    document.querySelectorAll(".bot").forEach(el => {
+        if (el.innerText === "Typing...") el.remove();
+    });
 
     addMessage(data.reply, "bot");
     saveMessage(data.reply, "bot");
 }
 
-/* Quick Buttons */
-function quick(text){
+/* Quick Send */
+function quick(text) {
     document.getElementById("userInput").value = text;
     sendMessage();
 }
 
-/* Add message to chat */
-function addMessage(text, sender){
+/* Add message */
+function addMessage(text, sender) {
     let div = document.createElement("div");
     div.className = "message " + sender;
     div.innerText = text;
@@ -254,10 +338,21 @@ function addMessage(text, sender){
 }
 
 /* Clear Chat */
-function clearChat(){
+function clearChat() {
     localStorage.removeItem("aps_chat");
     chatBox.innerHTML = "";
 }
+
+// Close menu when clicking outside
+document.addEventListener("click", function(event) {
+    const menu = document.getElementById("menuPanel");
+    const menuBtn = document.querySelector(".menu-btn");
+
+    if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+        menu.style.display = "none";
+    }
+});
+
 </script>
 
 </body>
