@@ -1,4 +1,5 @@
 # 🌟 Adarsha Pathasala – Official Website & AI Assistant  
+## 👉 [Visit Official Website](https://www.adarshapathasala.in/)  
 ### Designed & Developed by **Prem Prasad Pradhan**
 
 [![Project Banner](https://github.com/MRPREM31/adarsha-pathasala-website/blob/master/assets/github_pages/homepage.png?raw=true)](https://adarshapathasala.netlify.app/)
