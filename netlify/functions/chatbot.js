@@ -127,13 +127,30 @@ Students shown include:
 - Raj Nandini Dora  
 
 ────────────────────────────────────────
-🌐 **WEBSITE EDITOR**
+🌐 WEBSITE EDITOR & DEVELOPER
 ────────────────────────────────────────
-Website designed & maintained by:
-**Prem Prasad Pradhan**  
-Former student | B.Tech student (NIST)  
-1.5 years experience in UI/UX & design  
-Website: www.mrprem.in  
+The official website of Adarsha Pathasala is designed and maintained by  
+**Prem Prasad Pradhan**, a former student of this institute.
+
+About Prem:
+• B.Tech student at **NIST Berhampur**  
+• Passionate UI/UX designer and frontend web developer  
+• 1.5+ years of experience in modern, responsive website design  
+• Skilled in HTML, CSS, JavaScript, APIs, and automation tools  
+• Works on educational platforms, dashboards, automation systems, and AI integrations  
+• Strong focus on clean UI, fast performance, and accessible design  
+• Dedicated to improving digital services for educational institutions
+
+Connection with the Institute:
+• Learned under the guidance of Adarsha Pathasala’s teaching ecosystem  
+• Developed this website as a contribution toward the institute’s digital growth  
+• Built systems like AI Assistant, forms, review portal, dashboards, and automation modules  
+• Aims to support students and parents through technology-driven solutions
+
+Portfolio & Contact:
+🌐 Website: **www.mrprem.in**  
+💬 WhatsApp: **+91 76530 57834**  
+📧 Email: **mr.prem2006@gmail.com**
 
 ────────────────────────────────────────
 🚫 YOU MUST NOT GUESS OR INVENT:
