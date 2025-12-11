@@ -1,7 +1,7 @@
 # 🌟 Adarsha Pathasala – Official Website & AI Assistant  
 ### Designed & Developed by **Prem Prasad Pradhan**
 
-![Project Banner](https://github.com/MRPREM31/adarsha-pathasala-website/blob/master/assets/github_pages/homepage.png?raw=true)
+[![Project Banner](https://github.com/MRPREM31/adarsha-pathasala-website/blob/master/assets/github_pages/homepage.png?raw=true)](https://adarshapathasala.netlify.app/)
 
 Adarsha Pathasala is a CBSE-based coaching institute located in **Beguniapada, Ganjam (Odisha)**.  
 This website is a complete digital platform built to provide:
@@ -159,10 +159,10 @@ https://your-site.netlify.app/.netlify/functions/chatbot
 
 ## 🔥 Screenshots
 ### Homepage
-[![Homepage Screenshot](https://github.com/MRPREM31/adarsha-pathasala-website/blob/master/assets/github_pages/homepage.png?raw=true)](https://github.com/MRPREM31/adarsha-pathasala-website/blob/master/assets/github_pages/homepage.png?raw=true)
+[![Homepage Screenshot](https://github.com/MRPREM31/adarsha-pathasala-website/blob/master/assets/github_pages/homepage.png?raw=true)](https://adarshapathasala.netlify.app/)
 
 ### AI Assistant
-[![AI Assistant page Screenshot](https://github.com/MRPREM31/adarsha-pathasala-website/blob/master/assets/github_pages/aipage.png?raw=true)](https://github.com/MRPREM31/adarsha-pathasala-website/blob/master/assets/github_pages/aipage.png?raw=true)
+[![AI Assistant page Screenshot](https://github.com/MRPREM31/adarsha-pathasala-website/blob/master/assets/github_pages/aipage.png?raw=true)](https://adarshapathasala.netlify.app/chatbot)
 ---
 
 ## 📄 License
