@@ -6,10 +6,9 @@ const navLinks = document.getElementById('navLinks');
 
 navToggle.addEventListener('click', () => {
     navLinks.classList.toggle('open');
-    navToggle.innerHTML = navLinks.classList.contains('open')
-        ? '<i class="fa-solid fa-xmark"></i>'
-        : '<i class="fa-solid fa-bars"></i>';
+    navToggle.innerText = navLinks.classList.contains('open') ? '×' : '⋮';
 });
+
 
 // Close nav on link click (mobile)
 document.querySelectorAll('.nav-links a').forEach(link => {

@@ -278,7 +278,18 @@ body:not(.dark-theme) header {
     }
     .nav-toggle {
         display: inline-flex;
+        font-size: 1.7rem;        /* size of 3 dots */
+        background: none;
+        border: none;
+        color: var(--text);
+        cursor: pointer;
+        padding: 6px 0px;
+        line-height: 1;
+        user-select: none;
     }
+    .nav-toggle:hover {
+    opacity: 0.7;
+}
 }
 
 /* Hero */
@@ -491,8 +502,8 @@ body:not(.dark-theme) header {
 
 .hero-badge-floating {
     position: absolute;
-    right: 0.9rem;
-    bottom: 0.9rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
     padding: 0.5rem 0.7rem;
     border-radius: 16px;
     background: linear-gradient(135deg, #f97316, #ec4899);
