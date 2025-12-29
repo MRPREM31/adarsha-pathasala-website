@@ -1,6 +1,7 @@
-// netlify/functions/chatbot.js
+// api/chatbot.js
 
-const APS_KNOWLEDGE = `
+const APS_KNOWLEDGE = 
+`
 I am the official AI Assistant of **Adarsha Pathasala**, a trusted CBSE coaching institute located in **Beguniapada, Ganjam, Odisha – 761031**.
 I always speak in first person (“I am…”, “I can help…”) because I represent the institute.
 I NEVER say “You are the assistant”.
@@ -182,76 +183,59 @@ If someone asks about admission availability:
 ────────────────────────────────────────
 `;
 
-export async function handler(event, context) {
-    try {
-        // 1️⃣ Parse incoming request body
-        const body = JSON.parse(event.body || "{}");
-        const userMessage = (body.message || "").toString().trim() || "Hello";
-
-        // 2️⃣ Read API key from Netlify environment
-        const apiKey = process.env.GROQ_API_KEY;
-
-        if (!apiKey) {
-            console.error("❌ GROQ_API_KEY is missing on server.");
-            return {
-                statusCode: 500,
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    reply: "❌ Server is not configured correctly. (Missing API key)"
-                })
-            };
-        }
-
-        // 3️⃣ Call Groq Chat Completions API
-        const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-                model: "llama-3.1-8b-instant",     // ✅ Correct model name
-                temperature: 0.3,                 // ✅ More accurate, less random
-                messages: [
-                    {
-                        role: "system",
-                        content: APS_KNOWLEDGE +
-                            "\n\nNow answer the user’s question correctly based ONLY on this information and general study tips."
-                    },
-                    {
-                        role: "user",
-                        content: userMessage
-                    }
-                ],
-                max_tokens: 400
-            })
-        });
-
-        const data = await groqRes.json();
-        console.log("🔍 GROQ RAW RESPONSE:", JSON.stringify(data, null, 2));
-
-        const replyText =
-            data?.choices?.[0]?.message?.content?.trim() ||
-            "I'm here to help with Adarsha Pathasala related doubts.";
-
-        // 4️⃣ Return response to frontend
-        return {
-            statusCode: 200,
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*", // helpful if needed
-            },
-            body: JSON.stringify({ reply: replyText })
-        };
-
-    } catch (error) {
-        console.error("🚨 SERVER ERROR in chatbot function:", error);
-        return {
-            statusCode: 500,
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                reply: "⚠️ Server error. Please try again later or contact the institute directly."
-            })
-        };
+export default async function handler(req, res) {
+  try {
+    if (req.method !== "POST") {
+      return res.status(405).json({ reply: "Method Not Allowed" });
     }
+
+    const { message = "Hello" } = req.body || {};
+    const userMessage = message.toString().trim();
+
+    const apiKey = process.env.GROQ_API_KEY;
+    if (!apiKey) {
+      return res.status(500).json({
+        reply: "❌ Server configuration error (API key missing)"
+      });
+    }
+
+    const groqRes = await fetch(
+      "https://api.groq.com/openai/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          model: "llama-3.1-8b-instant",
+          temperature: 0.3,
+          messages: [
+            {
+              role: "system",
+              content:
+                APS_KNOWLEDGE +
+                "\n\nNow answer the user’s question correctly based ONLY on this information."
+            },
+            { role: "user", content: userMessage }
+          ],
+          max_tokens: 400
+        })
+      }
+    );
+
+    const data = await groqRes.json();
+    const reply =
+      data?.choices?.[0]?.message?.content?.trim() ||
+      "I'm here to help with Adarsha Pathasala related queries.";
+
+    return res.status(200).json({ reply });
+
+  } catch (err) {
+    console.error("Chatbot error:", err);
+    return res.status(500).json({
+      reply: "⚠️ Server error. Please try again later."
+    });
+  }
 }
+
