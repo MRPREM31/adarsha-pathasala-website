@@ -527,6 +527,11 @@ body:not(.dark-theme) header {
     gap: 1.8rem;
 }
 
+.chat-text{
+    position: absolute;
+    left: -9999px;
+}
+
 @media (min-width: 880px) {
     .about-grid {
         grid-template-columns: 1.4fr 1fr;
