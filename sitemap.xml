@@ -1,18 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-  <!-- Home Page -->
+  <!-- =========================
+       HOME PAGE
+  ========================== -->
   <url>
-    <loc>https://adarshapathasala.netlify.app/</loc>
+    <loc>https://www.adarshapathasala.in/</loc>
+    <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+
+    <!-- Logo -->
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/logo/adarshapathasala.png</image:loc>
+      <image:title>Adarsha Pathasala Logo</image:title>
+    </image:image>
+
+    <!-- Main Banner -->
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/og/adarsha-banner.png</image:loc>
+      <image:title>Adarsha Pathasala CBSE Coaching Institute</image:title>
+    </image:image>
   </url>
 
-  <!-- Chatbot Page -->
+  <!-- =========================
+       AI CHATBOT PAGE
+  ========================== -->
   <url>
-    <loc>https://adarshapathasala.netlify.app/chatbot</loc>
+    <loc>https://www.adarshapathasala.in/chatbot.html</loc>
+    <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+
+    <!-- Chatbot Image -->
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/og/ai-chatbot-banner.png</image:loc>
+      <image:title>Adarsha Pathasala AI Assistant</image:title>
+    </image:image>
   </url>
 
 </urlset>
