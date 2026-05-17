@@ -251,3 +251,176 @@ if (contactForm) {
         }
     });
 }
+
+// ---------------------------
+// Lightbox Gallery
+// ---------------------------
+document.addEventListener('DOMContentLoaded', function() {
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const resultCards = document.querySelectorAll('.result-card');
+    const btnDownload = document.getElementById('lightboxDownload');
+    const btnShare = document.getElementById('lightboxShare');
+    const btnCopy = document.getElementById('lightboxCopy');
+
+    let currentImgSrc = '';
+    let currentImageId = '';
+
+    // Open lightbox
+    if (resultCards.length > 0 && lightboxModal) {
+        resultCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const img = card.querySelector('img');
+                if (img) {
+                    currentImgSrc = img.src;
+                    currentImageId = card.getAttribute('data-result-id');
+                    lightboxImg.src = currentImgSrc;
+                    lightboxModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                    
+                    // Update URL with query param
+                    if (currentImageId) {
+                        const newUrl = window.location.pathname + '?image=' + currentImageId + window.location.hash;
+                        window.history.pushState({ path: newUrl }, '', newUrl);
+                    }
+                }
+            });
+            card.style.cursor = 'pointer'; // Make it obvious it's clickable
+        });
+
+        // Check URL on load
+        const urlParams = new URLSearchParams(window.location.search);
+        const imageParam = urlParams.get('image');
+        if (imageParam) {
+            const targetCard = Array.from(resultCards).find(card => card.getAttribute('data-result-id') === imageParam);
+            if (targetCard) {
+                // Slight delay to ensure everything is loaded before opening
+                setTimeout(() => {
+                    targetCard.click();
+                    // Scroll to results section in background
+                    const resultsSection = document.getElementById('achievements');
+                    if(resultsSection) resultsSection.scrollIntoView();
+                }, 100);
+            }
+        }
+    }
+
+    // Close lightbox
+    const closeLightbox = () => {
+        if(lightboxModal) {
+            lightboxModal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+            
+            // Remove query param from URL
+            const cleanUrl = window.location.pathname + window.location.hash;
+            window.history.pushState({ path: cleanUrl }, '', cleanUrl);
+        }
+    };
+
+    lightboxClose?.addEventListener('click', closeLightbox);
+    
+    // Close when clicking outside image
+    lightboxModal?.addEventListener('click', (e) => {
+        if (e.target === lightboxModal || e.target.classList.contains('lightbox-content')) {
+            closeLightbox();
+        }
+    });
+
+    // Handle Download
+    btnDownload?.addEventListener('click', () => {
+        if (!currentImgSrc) return;
+        
+        // Extract filename from URL or use a default
+        let fileName = currentImgSrc.substring(currentImgSrc.lastIndexOf('/') + 1) || 'result.jpg';
+        // Clean up any query parameters in filename
+        fileName = fileName.split('?')[0];
+        
+        fetch(currentImgSrc)
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = fileName;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(err => {
+                console.error('Error downloading image: ', err);
+                // Fallback approach if fetch fails (e.g., CORS issues)
+                const a = document.createElement('a');
+                a.href = currentImgSrc;
+                a.download = fileName;
+                a.target = '_blank';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            });
+    });
+
+    // Handle Copy Link
+    btnCopy?.addEventListener('click', () => {
+        if (!currentImageId) return;
+        const shareUrl = window.location.origin + window.location.pathname + '?image=' + currentImageId;
+        
+        navigator.clipboard.writeText(shareUrl).then(() => {
+            const originalText = btnCopy.innerHTML;
+            btnCopy.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+            setTimeout(() => {
+                btnCopy.innerHTML = originalText;
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+            alert('Failed to copy the link. You can copy it manually from your browser address bar.');
+        });
+    });
+
+    // Handle Share
+    btnShare?.addEventListener('click', async () => {
+        if (!currentImgSrc) return;
+        
+        try {
+            if (navigator.share) {
+                try {
+                    // Try to share as a file first (better experience for images)
+                    const response = await fetch(currentImgSrc);
+                    const blob = await response.blob();
+                    let fileName = currentImgSrc.substring(currentImgSrc.lastIndexOf('/') + 1) || 'result.jpg';
+                    fileName = fileName.split('?')[0];
+                    const file = new File([blob], fileName, { type: blob.type });
+
+                    const shareUrl = window.location.origin + window.location.pathname + '?image=' + currentImageId;
+
+                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                        await navigator.share({
+                            title: 'Adarsha Pathasala Result',
+                            text: 'Check out this amazing result from Adarsha Pathasala! View here: ',
+                            url: shareUrl,
+                            files: [file]
+                        });
+                    } else {
+                        throw new Error('File sharing not supported');
+                    }
+                } catch (fileErr) {
+                    // Fallback to sharing the page URL with the specific image param
+                    const shareUrl = window.location.origin + window.location.pathname + '?image=' + currentImageId;
+                    await navigator.share({
+                        title: 'Adarsha Pathasala Result',
+                        text: 'Check out this amazing result from Adarsha Pathasala!',
+                        url: shareUrl
+                    });
+                }
+            } else {
+                alert('Web Share is not supported in your browser. You can download the image instead.');
+            }
+        } catch (error) {
+            console.error('Error sharing:', error);
+            if (error.name !== 'AbortError') { // Don't alert if user just cancelled
+                alert('Could not share the image.');
+            }
+        }
+    });
+});

@@ -794,65 +794,90 @@
 
                 <h3 class="section-title">Our Results (2018–2025)</h3>
                 <div class="result-gallery">
-                    <div class="result-card">
+                    <div class="result-card" data-result-id="2018-19-Result">
                         <img src="./assets/result/2018-19.jpg" alt="2018–19 Result">
-                        <div class="result-overlay"></div>
+                        <div class="result-overlay">
+                            <i class="fa-solid fa-eye result-view-icon"></i>
+                        </div>
                         <div class="result-label">
                             2018–19
                             <span>Success Stories & Results</span>
                         </div>
                     </div>
 
-                    <div class="result-card">
+                    <div class="result-card" data-result-id="2019-20-Result">
                         <img src="./assets/result/2019-20.jpg" alt="2019–20 Result">
-                        <div class="result-overlay"></div>
+                        <div class="result-overlay">
+                            <i class="fa-solid fa-eye result-view-icon"></i>
+                        </div>
                         <div class="result-label">
                             2019–20
                             <span>Success Stories & Results</span>
                         </div>
                     </div>
 
-                    <div class="result-card">
+                    <div class="result-card" data-result-id="2020-21-Result">
                         <img src="./assets/result/2020-21.png" alt="2020–21 Result">
-                        <div class="result-overlay"></div>
+                        <div class="result-overlay">
+                            <i class="fa-solid fa-eye result-view-icon"></i>
+                        </div>
                         <div class="result-label">
                             2020–21
                             <span>Success Stories & Results</span>
                         </div>
                     </div>
 
-                    <div class="result-card">
+                    <div class="result-card" data-result-id="2021-22-Result">
                         <img src="./assets/result/2021-22.png" alt="2021–22 Result">
-                        <div class="result-overlay"></div>
+                        <div class="result-overlay">
+                            <i class="fa-solid fa-eye result-view-icon"></i>
+                        </div>
                         <div class="result-label">
                             2021–22
                             <span>Success Stories & Results</span>
                         </div>
                     </div>
 
-                    <div class="result-card">
+                    <div class="result-card" data-result-id="2022-23-Result">
                         <img src="./assets/result/2022-23.jpg" alt="2022–23 Result">
-                        <div class="result-overlay"></div>
+                        <div class="result-overlay">
+                            <i class="fa-solid fa-eye result-view-icon"></i>
+                        </div>
                         <div class="result-label">
                             2022–23
                             <span>Success Stories & Results</span>
                         </div>
                     </div>
 
-                    <div class="result-card">
+                    <div class="result-card" data-result-id="2023-24-Result">
                         <img src="./assets/result/2023-24.jpg" alt="2023–24 Result">
-                        <div class="result-overlay"></div>
+                        <div class="result-overlay">
+                            <i class="fa-solid fa-eye result-view-icon"></i>
+                        </div>
                         <div class="result-label">
                             2023–24
                             <span>Success Stories & Results</span>
                         </div>
                     </div>
 
-                    <div class="result-card">
+                    <div class="result-card" data-result-id="2024-25-Result">
                         <img src="./assets/result/2024-25.jpg" alt="2024–25 Result">
-                        <div class="result-overlay"></div>
+                        <div class="result-overlay">
+                            <i class="fa-solid fa-eye result-view-icon"></i>
+                        </div>
                         <div class="result-label">
                             2024–25
+                            <span>Success Stories & Results</span>
+                        </div>
+                    </div>
+
+                    <div class="result-card" data-result-id="2025-26-Result">
+                        <img src="./assets/result/2025-26.jpg" alt="2025–26 Result">
+                        <div class="result-overlay">
+                            <i class="fa-solid fa-eye result-view-icon"></i>
+                        </div>
+                        <div class="result-label">
+                            2025–26
                             <span>Success Stories & Results</span>
                         </div>
                     </div>
@@ -987,6 +1012,19 @@
             </div>
         </section>
     </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <span class="lightbox-close" title="Close">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="Result Fullscreen">
+            <div class="lightbox-actions">
+                <button id="lightboxDownload" class="btn-primary" title="Download Image"><i class="fa-solid fa-download"></i> Download</button>
+                <button id="lightboxCopy" class="btn-primary" title="Copy Link"><i class="fa-solid fa-link"></i> Copy Link</button>
+                <button id="lightboxShare" class="btn-primary" title="Share Image"><i class="fa-solid fa-share-nodes"></i> Share</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
