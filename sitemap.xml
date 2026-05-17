@@ -8,20 +8,185 @@
   ========================== -->
   <url>
     <loc>https://www.adarshapathasala.in/</loc>
-    <lastmod>2025-01-10</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
 
-    <!-- Logo -->
     <image:image>
       <image:loc>https://www.adarshapathasala.in/assets/logo/adarshapathasala.png</image:loc>
       <image:title>Adarsha Pathasala Logo</image:title>
     </image:image>
-
-    <!-- Main Banner -->
     <image:image>
-      <image:loc>https://www.adarshapathasala.in/assets/og/adarsha-banner.png</image:loc>
-      <image:title>Adarsha Pathasala CBSE Coaching Institute</image:title>
+      <image:loc>https://www.adarshapathasala.in/assets/faculty/bibhu%20sundar%20mahanty.jpg</image:loc>
+      <image:title>Bibhu Sundar Mohanty</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/faculty/M.Srijeet%20Kumar%20Rao.jpg</image:loc>
+      <image:title>M. Srijeet Kumar Rao</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/faculty/Padmalochan%20Satapathy.jpg</image:loc>
+      <image:title>Padmalochan Satapathy</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/faculty/Surjyakanta%20Swain.jpg</image:loc>
+      <image:title>Surjyakanta Swain</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/faculty/Pankaj%20Kumar%20Behera.jpg</image:loc>
+      <image:title>Pankaj Kumar Behera</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/faculty/Srikant%20Mohapatra.jpg</image:loc>
+      <image:title>Srikant Mohapatra</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/faculty/Deviprasad%20Satapathy.jpg</image:loc>
+      <image:title>Deviprasad Satapathy</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/faculty/Sankar%20Senapati.jpg</image:loc>
+      <image:title>Sankar Senapati</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/faculty/Jyotiprakash%20Sahu.jpg</image:loc>
+      <image:title>Jyotiprakash Sahu</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/faculty/Rajesh%20Gouda.jpg</image:loc>
+      <image:title>Rajesh Gouda</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/faculty/Jasmin%20Maharana.jpg</image:loc>
+      <image:title>Jasmin Maharana</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/faculty/B.NARAYAN.jpg</image:loc>
+      <image:title>B. Narayan</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/students/Sushree%20Harapriya%20Parida.jpg</image:loc>
+      <image:title>Sushree Harapriya Parida</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/students/Jasmin%20Maharana.jpg</image:loc>
+      <image:title>Jasmin Maharana</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/students/Sidharth%20Dash.jpg</image:loc>
+      <image:title>Sidharth Dash</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/students/Jyotirmayee%20Padhi.jpg</image:loc>
+      <image:title>Jyotirmayee Padhi</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/students/Prem%20Prasad%20Pradhan.jpeg</image:loc>
+      <image:title>Prem Prasad Pradhan</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/students/Subhralin%20Patra.jpg</image:loc>
+      <image:title>Subhralin Patra</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/students/Simanchala%20Bisoyi.jpg</image:loc>
+      <image:title>Simanchala Bisoyi</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/students/Raj%20Nandini%20Dora.jpg</image:loc>
+      <image:title>Raj Nandini Dora</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/memories/memory%201.jpg</image:loc>
+      <image:title>Classroom Activity</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/memories/memori%202.jpg</image:loc>
+      <image:title>Group Study</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/memories/memory%203.jpg</image:loc>
+      <image:title>Celebration</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/memories/memory%204.jpg</image:loc>
+      <image:title>Event</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/memories/memory%205.jpg</image:loc>
+      <image:title>Interaction</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/memories/memory%206.jpg</image:loc>
+      <image:title>Achievement</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/memories/memori%207.png</image:loc>
+      <image:title>Achievement</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/memories/memori%208.png</image:loc>
+      <image:title>Achievement</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/memories/memori%209.png</image:loc>
+      <image:title>Achievement</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/result/2018-19.jpg</image:loc>
+      <image:title>2018–19 Result</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/result/2019-20.jpg</image:loc>
+      <image:title>2019–20 Result</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/result/2020-21.png</image:loc>
+      <image:title>2020–21 Result</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/result/2021-22.png</image:loc>
+      <image:title>2021–22 Result</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/result/2022-23.jpg</image:loc>
+      <image:title>2022–23 Result</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/result/2023-24.jpg</image:loc>
+      <image:title>2023–24 Result</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/result/2024-25.jpg</image:loc>
+      <image:title>2024–25 Result</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/result/2025-26.jpg</image:loc>
+      <image:title>2025–26 Result</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/students/Prem.jpeg</image:loc>
+      <image:title>Prem Prasad Pradhan</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/logo/ai_bot.png</image:loc>
+      <image:title>AI Assistant Chatbot</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/app-icon/gmail.png</image:loc>
+      <image:title>gmail</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/app-icon/facebook.png</image:loc>
+      <image:title>facebook</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/app-icon/insta_logo.png</image:loc>
+      <image:title>instagram</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/app-icon/whatsapp.png</image:loc>
+      <image:title>whatsapp</image:title>
     </image:image>
   </url>
 
@@ -30,15 +195,9 @@
   ========================== -->
   <url>
     <loc>https://www.adarshapathasala.in/chatbot.html</loc>
-    <lastmod>2025-01-10</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-
-    <!-- Chatbot Image -->
-    <image:image>
-      <image:loc>https://www.adarshapathasala.in/assets/og/adarsha-banner.png</image:loc>
-      <image:title>Adarsha Pathasala AI Assistant</image:title>
-    </image:image>
   </url>
 
 </urlset>
