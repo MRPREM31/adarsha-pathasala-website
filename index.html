@@ -1116,14 +1116,18 @@
     const apPopup = document.getElementById("apChatPopup");
     const apClose = document.getElementById("apClosePopup");
 
-    apBtn.onclick = () => {
-        apPopup.style.display = "block";
-    };
+    if (apBtn && apPopup) {
+        apBtn.onclick = () => {
+            apPopup.style.display = "block";
+        };
+    }
 
-    apClose.onclick = () => {
-        apPopup.style.display = "none";
-    };
-</script>
+    if (apClose && apPopup) {
+        apClose.onclick = () => {
+            apPopup.style.display = "none";
+        };
+    }
+    </script>
 
 </body>
 </html>
