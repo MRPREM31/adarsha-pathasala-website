@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Opportunities Application Form -> Google Apps Script
 // ---------------------------
 const OPPORTUNITY_CONFIG = {
-    googleScriptUrl: "https://script.google.com/macros/s/AKfycbwVO5xNkaY26mH3shqGv_N7gYKlRuzw7UJ3fLGltwx8zSD9nvqegVM1qGM2VHlMvoxQxA/exec"
+    googleScriptUrl: "https://script.google.com/macros/s/AKfycby_aRS9GPCNLNUA_lhiTRl3zgRUuo32jAhDO3lBcN4dMAZMGpwqVtV3wUE_Xr9oIT9pxQ/exec"
 };
 
 const opportunityForm = document.getElementById('opportunityForm');
@@ -544,6 +544,25 @@ if (opportunityForm) {
                 if (summaryDate) {
                     const now = new Date();
                     summaryDate.textContent = now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+                }
+
+                // Show email sent status notice
+                const emailSentNotice = document.getElementById('emailSentNotice');
+
+                if (result.emailSent === true) {
+                    if (emailSentNotice) {
+                        emailSentNotice.innerHTML = '<i class="fa-solid fa-envelope-circle-check"></i> Confirmation email sent to <strong>' + fullNameVal + '</strong> (' + emailVal + ')';
+                        emailSentNotice.className = 'email-sent-notice';
+                        emailSentNotice.style.display = 'inline-flex';
+                    }
+                } else if (result.emailSent === false) {
+                    if (emailSentNotice) {
+                        emailSentNotice.innerHTML = '<i class="fa-solid fa-circle-info"></i> Application saved successfully. Note: Confirmation email could not be sent.';
+                        emailSentNotice.className = 'email-sent-notice info-notice';
+                        emailSentNotice.style.display = 'inline-flex';
+                    }
+                } else {
+                    if (emailSentNotice) emailSentNotice.style.display = 'none';
                 }
 
                 // Hide form & show polished Success Confirmation Card
