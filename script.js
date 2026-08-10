@@ -11,7 +11,8 @@ if (navToggle && navLinks) {
         navToggle.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
     };
 
-    navToggle.addEventListener('click', () => {
+    navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         navLinks.classList.toggle('open');
         updateToggleIcon();
     });
@@ -19,9 +20,8 @@ if (navToggle && navLinks) {
     document.addEventListener("click", function (e) {
         if (!navLinks || !navToggle) return;
         const isClickInsideMenu = navLinks.contains(e.target);
-        const isClickOnToggle = navToggle.contains(e.target);
 
-        if (!isClickInsideMenu && !isClickOnToggle) {
+        if (!isClickInsideMenu) {
             if (navLinks.classList.contains("open")) {
                 navLinks.classList.remove("open");
                 updateToggleIcon();

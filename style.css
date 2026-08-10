@@ -245,6 +245,10 @@ body:not(.dark-theme) header {
     transition: all var(--transition-fast);
 }
 
+.nav-toggle * {
+    pointer-events: none;
+}
+
 .mode-toggle {
     border-radius: 999px;
     border: 1px solid var(--border-color);
