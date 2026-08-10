@@ -5,9 +5,15 @@ const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 
 if (navToggle && navLinks) {
+    const updateToggleIcon = () => {
+        const isOpen = navLinks.classList.contains('open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        navToggle.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    };
+
     navToggle.addEventListener('click', () => {
         navLinks.classList.toggle('open');
-        navToggle.innerText = navLinks.classList.contains('open') ? '×' : '⋮';
+        updateToggleIcon();
     });
 
     document.addEventListener("click", function (e) {
@@ -18,7 +24,7 @@ if (navToggle && navLinks) {
         if (!isClickInsideMenu && !isClickOnToggle) {
             if (navLinks.classList.contains("open")) {
                 navLinks.classList.remove("open");
-                navToggle.innerText = "⋮";
+                updateToggleIcon();
             }
         }
     });
@@ -27,11 +33,32 @@ if (navToggle && navLinks) {
         link.addEventListener('click', () => {
             if (navLinks && navLinks.classList.contains('open')) {
                 navLinks.classList.remove('open');
-                if (navToggle) navToggle.innerText = '⋮';
+                updateToggleIcon();
             }
         });
     });
 }
+
+// ---------------------------
+// Active Nav Link Highlighter
+// ---------------------------
+document.addEventListener('DOMContentLoaded', () => {
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const links = document.querySelectorAll('.nav-links a');
+
+    links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+
+        if (currentPath === 'opportunities.html' && href.includes('opportunities.html')) {
+            link.classList.add('active');
+        } else if (currentPath !== 'opportunities.html' && (href === '#home' || href === 'index.html#home')) {
+            if (!window.location.hash || window.location.hash === '#home') {
+                link.classList.add('active');
+            }
+        }
+    });
+});
 
 // ---------------------------
 // Dark / Light Mode Toggle (Safe Guarded)
