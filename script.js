@@ -92,11 +92,8 @@ if (modeToggle) {
     });
 }
 
-// ---------------------------
-// Contact Form -> Google Apps Script (Index Page)
-// ---------------------------
 const contactForm = document.getElementById('contactForm');
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyxAGlV0A8ykb_FwvwzTRFwKEkJCMdYwxz-XtnP7KnjBX1GHiH--W-GEQzgXIc3YJHv/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby_aRS9GPCNLNUA_lhiTRl3zgRUuo32jAhDO3lBcN4dMAZMGpwqVtV3wUE_Xr9oIT9pxQ/exec";
 
 if (contactForm) {
     const formStatus = document.getElementById('formStatus');
