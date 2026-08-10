@@ -221,7 +221,6 @@ body:not(.dark-theme) header {
     transition: width var(--transition-fast);
 }
 
-.nav-links a:hover::after {
 .nav-links a:hover::after,
 .nav-links a.active::after {
     width: 100%;
