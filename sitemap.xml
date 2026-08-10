@@ -200,4 +200,19 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- =========================
+       CAREER OPPORTUNITIES PAGE
+  ========================== -->
+  <url>
+    <loc>https://www.adarshapathasala.in/opportunities.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.adarshapathasala.in/assets/opportunity/Adarsha_Pathasala_Teacher_Recruitment.png</image:loc>
+      <image:title>Teacher Recruitment Opportunity - Adarsha Pathasala</image:title>
+    </image:image>
+  </url>
+
 </urlset>
+

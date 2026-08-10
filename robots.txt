@@ -16,6 +16,7 @@ Disallow: /_headers
 Allow: /assets/
 Allow: /assets/logo/
 Allow: /assets/og/
+Allow: /assets/opportunity/
 Allow: /assets/memories/
 Allow: /assets/students/
 Allow: /assets/result/
@@ -31,6 +32,7 @@ User-agent: Googlebot-Image
 Allow: /assets/
 Allow: /assets/logo/
 Allow: /assets/og/
+Allow: /assets/opportunity/
 Allow: /assets/memories/
 Allow: /assets/students/
 Allow: /assets/result/
